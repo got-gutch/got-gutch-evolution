@@ -1,0 +1,3 @@
+# Treat ROM binary files as binary to prevent line-ending changes and bad diffs
+*.bin binary
+*.hex binary
