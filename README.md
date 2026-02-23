@@ -15,8 +15,7 @@ got-gutch-evolution/
 │       │   └── tunes/          ← derived tune ROMs (.bin and .hex)
 │       └── docs/
 │           ├── modifications/
-│           │   ├── 2003-2014/  ← mods performed 2003–2014
-│           │   └── 2014-2026/  ← mods performed 2014–2026
+│           │   └── README.md       ← all modifications (2003–2026)
 │           └── repairs/        ← repair records
 └── scripts/
     ├── evoscan_parser.py       ← parse EvoScan 2.9 data log CSV files

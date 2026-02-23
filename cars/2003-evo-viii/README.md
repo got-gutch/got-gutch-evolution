@@ -30,7 +30,6 @@ Purchased in December 2003 from a woman in Long Island whose husband had just bo
 │   └── tunes/              ← derived tune ROMs (.bin and .hex)
 └── docs/
     ├── modifications/
-    │   ├── 2003-2014/      ← mods performed 2003–2014
-    │   └── 2014-2026/      ← mods performed 2014–2026
+    │   └── README.md           ← all modifications (2003–2026)
     └── repairs/            ← repair records
 ```
