@@ -1,22 +1,24 @@
 # got-gutch-evolution
 
-Projects used to facilitate and manage on-going Mitsubishi Lancer Evolution tuning.
+Projects used to facilitate and manage on-going tuning and maintenance for multiple vehicles, with a primary focus on the Mitsubishi Lancer Evolution VIII. This repository manages tuning artifacts, datalogs, ROMs, and documentation for each car. While the Evo is the current focus, the structure supports additional vehicles and their respective tuning journeys.
 
 ## Repository Layout
 
 ```
 got-gutch-evolution/
 ├── cars/
-│   └── 2003-evo-viii/          ← 2003 USDM Mitsubishi Lancer Evolution VIII
-│       ├── README.md           ← vehicle details, purchase history, YouTube channel
-│       ├── roms/
-│       │   ├── README.md       ← ROM naming convention
-│       │   ├── stock/          ← base ROM snapshots read directly from the ECU
-│       │   └── tunes/          ← derived tune ROMs (.bin and .hex)
-│       └── docs/
-│           ├── modifications/
-│           │   └── README.md       ← all modifications (2003–2026)
-│           └── repairs/        ← repair records
+│   ├── 2003-evo-viii/          ← 2003 USDM Mitsubishi Lancer Evolution VIII
+│   │   ├── README.md           ← vehicle details, purchase history, YouTube channel
+│   │   ├── roms/
+│   │   │   ├── README.md       ← ROM naming convention
+│   │   │   ├── stock/          ← base ROM snapshots read directly from the ECU
+│   │   │   └── tunes/          ← derived tune ROMs (.bin and .hex)
+│   │   ├── docs/
+│   │   │   ├── modifications/
+│   │   │   │   └── README.md   ← all modifications (2003–2026)
+│   │   │   └── repairs/        ← repair records
+│   │   └── logs/               ← important EvoScan datalogs
+│   └── 2017-ford-focusrs/      ← 2017 Ford Focus RS (Current Status: waiting on an engine from Mountune)
 └── scripts/
     ├── evoscan_parser.py       ← parse EvoScan 2.9 data log CSV files
     ├── rom_manager.py          ← list, compare and diff ROM files

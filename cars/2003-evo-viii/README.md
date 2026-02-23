@@ -19,17 +19,3 @@
 
 Purchased in December 2003 from a woman in Long Island whose husband had just bought the car new. He was lost to a rally race accident. The car was bought from his wife for $24,000.
 
-## Directory Structure
-
-```
-2003-evo-viii/
-├── README.md               ← this file
-├── roms/
-│   ├── README.md           ← ROM naming convention
-│   ├── stock/              ← base ROM snapshots (one .bin per flash session)
-│   └── tunes/              ← derived tune ROMs (.bin and .hex)
-└── docs/
-    ├── modifications/
-    │   └── README.md           ← all modifications (2003–2026)
-    └── repairs/            ← repair records
-```
