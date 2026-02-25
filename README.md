@@ -32,17 +32,17 @@ All scripts require **Python 3.10+** and use only the standard library.
 ### EvoScan log parser
 
 ```bash
-# Summarise all channels in a log file
-python scripts/evoscan_parser.py path/to/log.csv
+# Summarise all channels in a real EvoScan log file
+python scripts/evoscan_parser.py cars/2003-evo-viii/logs/evoscan_log_2026_02_18.csv
 
-# Export a cleaned CSV
-python scripts/evoscan_parser.py path/to/log.csv --export cleaned.csv
+# Export a cleaned CSV from a real log
+python scripts/evoscan_parser.py cars/2003-evo-viii/logs/evoscan_log_2026_02_18.csv --export cars/2003-evo-viii/logs/evoscan_log_2026_02_18_cleaned.csv
 ```
 
 ### ROM manager
 
 ```bash
-# List all ROMs under the car's ROM directory
+# List all ROMs under the Evo's ROM directory
 python scripts/rom_manager.py list cars/2003-evo-viii/roms
 
 # Show tunes derived from a specific base ROM
@@ -52,25 +52,25 @@ python scripts/rom_manager.py tunes bgutch_2003_evo8_11_11_2025.bin \
 # Byte-level diff two ROM files
 python scripts/rom_manager.py diff \
     cars/2003-evo-viii/roms/stock/bgutch_2003_evo8_11_11_2025.bin \
-    cars/2003-evo-viii/roms/tunes/bgutch_2003_evo8_11_11_2025_tune_010_wastegateclear.bin
+    cars/2003-evo-viii/roms/tunes/bgutch_2003_evo8_11_11_2025_tune_010_wastegateclear.hex
 ```
 
 ### Tune tables
 
 ```bash
-# Print the octane table from a ROM
+# Print the octane table from a real ROM
 python scripts/tune_tables.py show cars/2003-evo-viii/roms/stock/bgutch_2003_evo8_11_11_2025.bin --table octane
 
-# Diff the ignition table between two ROMs
+# Diff the ignition table between two real ROMs
 python scripts/tune_tables.py compare \
     cars/2003-evo-viii/roms/stock/bgutch_2003_evo8_11_11_2025.bin \
-    cars/2003-evo-viii/roms/tunes/bgutch_2003_evo8_11_11_2025_tune_020_map_scaling.bin \
+    cars/2003-evo-viii/roms/tunes/bgutch_2003_evo8_11_11_2025_tune_020_map_scaling.hex \
     --table ignition
 
 # Export a table to CSV
 python scripts/tune_tables.py export \
     cars/2003-evo-viii/roms/stock/bgutch_2003_evo8_11_11_2025.bin \
-    --table octane --out /tmp/octane.csv
+    --table octane --out cars/2003-evo-viii/roms/stock/octane_table.csv
 ```
 
 ## ROM Naming Convention
@@ -79,12 +79,12 @@ python scripts/tune_tables.py export \
 {owner}_{car_year}_{car_model}_{MM}_{DD}_{YYYY}[_tune_{NNN}_{description}].{ext}
 ```
 
-See `cars/2003-evo-viii/roms/README.md` for full details.
+See [cars/2003-evo-viii/roms/README.md]('./cars/2003-evo-viii/roms/README.md') for full details.
 
 ## ECU Toolchain
 
-| Tool            | Version / Model              |
-|-----------------|------------------------------|
-| Data logging    | EvoScan 2.9                  |
-| ROM editing     | EcuFlash                     |
-| Flash cable     | Tactrix Openport 1.3U        |
+| Tool            | Version / Model      |
+|-----------------|----------------------|
+| Data logging    | EvoScan 2.9          |
+| ROM editing     | EcuFlash             |
+| Flash cable     | Openport 1.3U        |
