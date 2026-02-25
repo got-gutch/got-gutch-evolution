@@ -51,7 +51,7 @@ stock and had a very aggressive sound to it. I removed the stock airbox and repl
 which made the car sound even better.
 
 I used the car as a daily driver from 2004 to 2014 then put it in my garage. I started it every month or two to keep the fluids circulating.
-But, after the motor in my 2017 Ford Focus RS died 10 2025, I decided to start tuning the Evo 8.
+But, after the motor in my 2017 Ford Focus RS died in 2025 I decided to start tuning the Evo 8.
 
 The idea is to create a car that doesn't have large HP numbers on paper, but is very responsive and fun to drive. I want 
 to be able to drive the car hard on the street without worrying about reliability or traction issues. But, I also want to 
