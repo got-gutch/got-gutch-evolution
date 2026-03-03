@@ -81,7 +81,7 @@
 | Installed | March 2, 2026   |
 | Reason    | Replacement     |
 
-**Data Logs:** [EvoScanDataLog_2026.03.02_18.01.58.csv](https://github.com/got-gutch/got-gutch-evolution/blob/main/cars/2003-evo-viii/logs/EvoScanDataLog_2026.03.02_18.01.58.csv)
+**Data Logs:** [EvoScanDataLog_2026.03.02_18.01.58.csv](../../logs/EvoScanDataLog_2026.03.02_18.01.58.csv)
 
 **References / YouTube Shorts:** https://youtube.com/shorts/UXUkUpyreZQ?si=6SoOyYVxbmHiZqml
 
@@ -107,6 +107,6 @@
 
 **Action Required:** ECU tuning adjustment needed to prevent wastegate duty cycle from staying at 100% with the new low-backpressure exhaust system.
 
-**Data Logs:** [EvoScanDataLog_2026.03.02_18.01.58.csv](https://github.com/got-gutch/got-gutch-evolution/blob/main/cars/2003-evo-viii/logs/EvoScanDataLog_2026.03.02_18.01.58.csv) — see MAP column
+**Data Logs:** [EvoScanDataLog_2026.03.02_18.01.58.csv](../../logs/EvoScanDataLog_2026.03.02_18.01.58.csv) — see MAP column
 
 **References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
