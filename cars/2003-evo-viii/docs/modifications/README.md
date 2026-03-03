@@ -98,6 +98,8 @@
 
 **Over-Boost Condition & ECU Fuel Cut:** Data logs captured after this modification revealed a critical over-boost event that triggered an ECU fuel cut (the audible "boom").
 
+<img src="https://github.com/user-attachments/assets/d4633249-4159-4310-bd0d-200ce3616277" alt="Over-boost event graph showing Engine RPM, Speed, and Boost (MAP) during the fuel cut">
+
 **The Breakdown:**
 1. **The Overboost Spike:** At approximately 3,400 RPM under 100% throttle, MAP sensor hit **47.78 psia**. This translates to **33.08 psi of boost** (47.78 psia - 14.7 atmospheric = 33.08 psig). Target boost was 21 psi — **overshooting by 12 psi in a split second**.
 
