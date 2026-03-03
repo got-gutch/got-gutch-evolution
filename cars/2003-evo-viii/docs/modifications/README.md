@@ -71,3 +71,27 @@
 | Purpose     | Reduced rotating mass, improved clutch engagement for performance driving  |
 
 **References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
+
+---
+
+## Right and Left Drip Moldings Replacement
+
+| Field     | Value           |
+|-----------|-----------------|
+| Installed | March 2, 2026   |
+| Reason    | Replacement     |
+
+**References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
+
+---
+
+## Exhaust System Upgrade (Down Pipe Back)
+
+| Field       | Value                                                |
+|-------------|------------------------------------------------------|
+| Race Pipe   | Boosted Fabrication Resonated Race Pipe (Ultra Quiet Style) |
+| Cat-Back    | Tomei Titanium Cat-Back Exhaust                      |
+| Installed   | March 2, 2026                                        |
+| Purpose     | Performance exhaust upgrade — replaced from down pipe back |
+
+**References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
