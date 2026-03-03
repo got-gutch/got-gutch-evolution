@@ -81,7 +81,9 @@
 | Installed | March 2, 2026   |
 | Reason    | Replacement     |
 
-**References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
+**Data Logs:** [EvoScanDataLog_2026.03.02_18.01.58.csv](https://github.com/got-gutch/got-gutch-evolution/blob/main/cars/2003-evo-viii/logs/EvoScanDataLog_2026.03.02_18.01.58.csv)
+
+**References / YouTube Shorts:** https://youtube.com/shorts/UXUkUpyreZQ?si=6SoOyYVxbmHiZqml
 
 ---
 
@@ -93,5 +95,9 @@
 | Cat-Back    | Tomei Titanium Cat-Back Exhaust                      |
 | Installed   | March 2, 2026                                        |
 | Purpose     | Performance exhaust upgrade — replaced from down pipe back |
+
+**Over-Boost Condition:** Data logs captured after this modification revealed an over-boost condition with manifold absolute pressure (MAP) peaking at **~47.8 psi** during testing. This significantly exceeds safe boost levels (stock ~14-18 psi, typical modified ~20-25 psi) and requires immediate attention to prevent engine damage. The over-boost is likely due to wastegate issues, boost controller malfunction, or restrictions in the new exhaust setup.
+
+**Data Logs:** [EvoScanDataLog_2026.03.02_18.01.58.csv](https://github.com/got-gutch/got-gutch-evolution/blob/main/cars/2003-evo-viii/logs/EvoScanDataLog_2026.03.02_18.01.58.csv) — see MAP column
 
 **References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
