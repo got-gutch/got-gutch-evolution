@@ -96,7 +96,16 @@
 | Installed   | March 2, 2026                                        |
 | Purpose     | Performance exhaust upgrade — replaced from down pipe back |
 
-**Over-Boost Condition:** Data logs captured after this modification revealed an over-boost condition with manifold absolute pressure (MAP) peaking at **~47.8 psi** during testing. This significantly exceeds safe boost levels (stock ~14-18 psi, typical modified ~20-25 psi) and requires immediate attention to prevent engine damage. The over-boost is likely due to wastegate issues, boost controller malfunction, or restrictions in the new exhaust setup.
+**Over-Boost Condition & ECU Fuel Cut:** Data logs captured after this modification revealed a critical over-boost event that triggered an ECU fuel cut (the audible "boom").
+
+**The Breakdown:**
+1. **The Overboost Spike:** At approximately 3,400 RPM under 100% throttle, MAP sensor hit **47.78 psia**. This translates to **33.08 psi of boost** (47.78 psia - 14.7 atmospheric = 33.08 psig). Target boost was 21 psi — **overshooting by 12 psi in a split second**.
+
+2. **Root Cause - WGDC at 100%:** The log shows Wastegate Duty Cycle (WGDC) was pegged at **100.0%** during the entire pull. In the Evo ECU, 100% duty cycle means the solenoid is keeping the wastegate slammed shut to build boost as fast as possible. With the new Tomei titanium exhaust installed, the turbo experienced significantly reduced backpressure and spooled much faster than the ECU expected. Because the WGDC didn't drop, the turbo kept pumping until it hit its physical limit.
+
+3. **The "Loud Boom" (Fuel Cut):** When the ECU detected 33 psi, it hit the Boost Cut / Load Limit and immediately cut fuel to the injectors while under heavy load. This violent event is the ECU's safety mechanism to prevent engine damage. The log shows a KnockSum of only 1 during the spike, confirming the ECU intervened in time to save the motor from detonation.
+
+**Action Required:** ECU tuning adjustment needed to prevent wastegate duty cycle from staying at 100% with the new low-backpressure exhaust system.
 
 **Data Logs:** [EvoScanDataLog_2026.03.02_18.01.58.csv](https://github.com/got-gutch/got-gutch-evolution/blob/main/cars/2003-evo-viii/logs/EvoScanDataLog_2026.03.02_18.01.58.csv) — see MAP column
 
