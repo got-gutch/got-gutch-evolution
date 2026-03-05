@@ -1,0 +1,101 @@
+flashing tool "mitsukernel" loaded.
+flashing tool "mitsukernelocp" loaded.
+flashing tool "mitsubootloader" loaded.
+OpenPort Cable Connected.
+262144 byte image read.
+3392 byte kernel read.
+sending init sequence 1 (0001)
+got 0x05 response
+sending init sequence 2
+got 0x1B response
+sending init sequence 3
+entering bootloader
+sending kernel size (3392)
+sending kernel load address (0xFFFF8800)
+uploading kernel
+verifying kernel checksum response
+kernel valid
+kernel get version
+kernel version is : OpenECU Mitsubishi SH7052 Kernel V0.21
+Flashing image to ECU memory...
+comparing ECU flash memory pages to image file
+segment   len   ecu CRC32    img CRC32    same?
+FB01 00001000   ED4A23C3     ED4A23C3     YES
+FB02 00001000   FAE2FEE2     930C86BD      NO
+FB03 00001000   2FBE7C0D     9EBEFC12      NO
+FB04 00001000   3901D86F     142CFC9F      NO
+FB05 00001000   9D2A2AEB     D923C020      NO
+FB06 00001000   07492739     07492739     YES
+FB07 00001000   5F510FA9     5F510FA9     YES
+FB08 00001000   AF5BF200     AF5BF200     YES
+FB09 00008000   0E6CB77E     0E6CB77E     YES
+FB10 00010000   3EBCEA7A     3EBCEA7A     YES
+FB11 00010000   0127AD4F     0127AD4F     YES
+FB12 00010000   A153A12D     A153A12D     YES
+kernel flash enable
+22:39:15  kernel blank flash page: addr: 00004000
+22:39:15  erased in 2 pulse(s)
+22:39:15  kernel write flash buffer addr: 00004000 len: 00000200
+22:39:16  kernel write flash buffer addr: 00004200 len: 00000200
+22:39:16  kernel write flash buffer addr: 00004400 len: 00000200
+22:39:16  kernel write flash buffer addr: 00004600 len: 00000200
+22:39:16  kernel write flash buffer addr: 00004800 len: 00000200
+22:39:16  kernel write flash buffer addr: 00004A00 len: 00000200
+22:39:16  kernel write flash buffer addr: 00004C00 len: 00000200
+22:39:16  kernel write flash buffer addr: 00004E00 len: 00000200
+22:39:16  kernel commit flash addr: 00004000 crc32 D923C020
+22:39:17  written in 36 pulse(s)
+22:39:17  kernel blank flash page: addr: 00003000
+22:39:17  erased in 2 pulse(s)
+22:39:17  kernel write flash buffer addr: 00003000 len: 00000200
+22:39:17  kernel write flash buffer addr: 00003200 len: 00000200
+22:39:17  kernel write flash buffer addr: 00003400 len: 00000200
+22:39:17  kernel write flash buffer addr: 00003600 len: 00000200
+22:39:17  kernel write flash buffer addr: 00003800 len: 00000200
+22:39:17  kernel write flash buffer addr: 00003A00 len: 00000200
+22:39:18  kernel write flash buffer addr: 00003C00 len: 00000200
+22:39:18  kernel write flash buffer addr: 00003E00 len: 00000200
+22:39:18  kernel commit flash addr: 00003000 crc32 142CFC9F
+22:39:18  written in 36 pulse(s)
+22:39:18  kernel blank flash page: addr: 00002000
+22:39:18  erased in 2 pulse(s)
+22:39:18  kernel write flash buffer addr: 00002000 len: 00000200
+22:39:18  kernel write flash buffer addr: 00002200 len: 00000200
+22:39:19  kernel write flash buffer addr: 00002400 len: 00000200
+22:39:19  kernel write flash buffer addr: 00002600 len: 00000200
+22:39:19  kernel write flash buffer addr: 00002800 len: 00000200
+22:39:19  kernel write flash buffer addr: 00002A00 len: 00000200
+22:39:19  kernel write flash buffer addr: 00002C00 len: 00000200
+22:39:19  kernel write flash buffer addr: 00002E00 len: 00000200
+22:39:19  kernel commit flash addr: 00002000 crc32 9EBEFC12
+22:39:20  written in 38 pulse(s)
+22:39:20  kernel blank flash page: addr: 00001000
+22:39:20  erased in 2 pulse(s)
+22:39:20  kernel write flash buffer addr: 00001000 len: 00000200
+22:39:20  kernel write flash buffer addr: 00001200 len: 00000200
+22:39:20  kernel write flash buffer addr: 00001400 len: 00000200
+22:39:20  kernel write flash buffer addr: 00001600 len: 00000200
+22:39:20  kernel write flash buffer addr: 00001800 len: 00000200
+22:39:20  kernel write flash buffer addr: 00001A00 len: 00000200
+22:39:20  kernel write flash buffer addr: 00001C00 len: 00000200
+22:39:20  kernel write flash buffer addr: 00001E00 len: 00000200
+22:39:21  kernel commit flash addr: 00001000 crc32 930C86BD
+22:39:21  written in 36 pulse(s)
+kernel flash disable
+verifying result...
+comparing ECU flash memory pages to image file
+segment   len   ecu CRC32    img CRC32    same?
+FB01 00001000   ED4A23C3     ED4A23C3     YES
+FB02 00001000   930C86BD     930C86BD     YES
+FB03 00001000   9EBEFC12     9EBEFC12     YES
+FB04 00001000   142CFC9F     142CFC9F     YES
+FB05 00001000   D923C020     D923C020     YES
+FB06 00001000   07492739     07492739     YES
+FB07 00001000   5F510FA9     5F510FA9     YES
+FB08 00001000   AF5BF200     AF5BF200     YES
+FB09 00008000   0E6CB77E     0E6CB77E     YES
+FB10 00010000   3EBCEA7A     3EBCEA7A     YES
+FB11 00010000   0127AD4F     0127AD4F     YES
+FB12 00010000   A153A12D     A153A12D     YES
+flash correct! exiting.
+interface close

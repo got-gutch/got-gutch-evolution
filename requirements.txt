@@ -1,0 +1,4 @@
+# Core dependencies for parsing EvoScan logs and ROM management
+pandas
+# matplotlib
+
