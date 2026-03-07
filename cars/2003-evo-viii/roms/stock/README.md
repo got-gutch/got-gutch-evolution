@@ -1,5 +1,15 @@
 # Stock / Base ROMs — 2003 Evo VIII
 
+## Vehicle & ROM Info
+- **Make:** Mitsubishi
+- **Model:** Lancer
+- **Submodel:** EVO8
+- **Transmission:** Manual
+- **Year:** 2004
+- **Case ID:** MN132874
+- **Internal ID:** 94170008
+- **Memory Model:** SH7052
+
 Base ROMs are read directly from the ECU using EvoScan 2.9 via the Tactrix Openport 1.3U.
 Each file is a full binary image of the ECU at the time it was read.
 
