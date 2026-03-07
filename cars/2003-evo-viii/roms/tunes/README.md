@@ -1,34 +1,36 @@
 # Tune ROMs — 2003 Evo VIII
 
 Tune ROMs are derived from a base ROM using EcuFlash and flashed via EvoScan 2.9.
-Each tune is saved in both `.bin` (raw binary) and `.hex` (Intel HEX) formats.
+Only `.hex` (Intel HEX) formats are tracked here as they are the primary flash artifacts.
 
 ## Tune Inventory
 
-| File | Base ROM Date | Tune # | Description |
-|------|---------------|--------|-------------|
-| `bgutch_2003_evo8_11_11_2025_tune_010_wastegateclear.bin` | 2025-11-11 | 010 | Wastegate clearance adjustment |
-| `bgutch_2003_evo8_11_11_2025_tune_010_wastegateclear.hex` | 2025-11-11 | 010 | Wastegate clearance adjustment (HEX) |
-| `bgutch_2003_evo8_11_11_2025_tune_020_map_scaling.bin` | 2025-11-11 | 020 | MAP sensor scaling update |
-| `bgutch_2003_evo8_11_11_2025_tune_020_map_scaling.hex` | 2025-11-11 | 020 | MAP sensor scaling update (HEX) |
-| `bgutch_2003_evo8_02_18_2026_tune_001_rpm_limit.bin` | 2026-02-18 | 001 | RPM limit adjustment |
-| `bgutch_2003_evo8_02_18_2026_tune_001_rpm_limit.hex` | 2026-02-18 | 001 | RPM limit adjustment (HEX) |
+| Tune # | File | Base ROM Date | Flash Date | Description |
+|--------|------|---------------|------------|-------------|
+| 001 | [`e8-t001-rpm-limit.hex`](./e8-t001-rpm-limit.hex) | 2025-11-11 | 2026-02-18 | **First Flash:** RPM limit adjustment |
+| 010 | [`e8-t010-wgclear.hex`](./e8-t010-wgclear.hex) | 2025-11-11 | Feb 2026 | Wastegate clearance adjustment |
+| 020 | [`e8-t020-mapscale.hex`](./e8-t020-mapscale.hex) | 2025-11-11 | Feb 2026 | MAP sensor scaling update |
+| 021 | [`e8-t021-mut1.hex`](./e8-t021-mut1.hex) | 2025-11-11 | Feb 2026 | Attempted MUT 2-byte load configuration (Failed) |
+| 022 | [`e8-t022-mut2.hex`](./e8-t022-mut2.hex) | 2025-11-11 | Feb 2026 | Refined MUT 2-byte load addresses (Failed) |
+| 023 | [`e8-t023-v1byte.hex`](./e8-t023-v1byte.hex) | 2025-11-11 | Feb 2026 | Revert to Tune 020 logic; Pivot to 1-byte load logging |
 
 ## Tune Sequence Notes
 
+- **Naming Convention:** All tunes now use the prefix `e8-tXXX` (Evo 8 - Tune XXX) followed by a short descriptor to fit within the narrow EvoScan "Write ROM" window.
+- **2-Byte vs 1-Byte Load:** After several attempts (Tunes 021/022) to stabilize 2-byte MUT load logging, the project is shifting to 1-byte load logging. While 1-byte has less precision, it is more reliable for tracking higher load boundaries without the offset/alignment issues encountered in the 2-byte attempts.
 - Tune numbers are zero-padded to 3 digits and increment by 10 within the same base ROM session, leaving room to insert tunes between existing ones.
 - Tune 001 on the `02_18_2026` base started a fresh sequence for that flash session.
 
 ## How to Flash a Tune
 
-1. Open EcuFlash and load the tune `.bin` file.
+1. Open EcuFlash and load the tune `.hex` file.
 2. Connect the Tactrix Openport 1.3U to the OBD-II port.
-3. In EvoScan 2.9 select **ECU → Write ROM** and select the `.bin` file.
+3. In EvoScan 2.9 select **ECU → Write ROM** and select the `.hex` file.
 
 ## How to Compare a Tune Against Its Base ROM
 
 ```bash
 python scripts/rom_manager.py diff \
-    cars/2003-evo-viii/roms/stock/bgutch_2003_evo8_11_11_2025.bin \
-    cars/2003-evo-viii/roms/tunes/bgutch_2003_evo8_11_11_2025_tune_010_wastegateclear.bin
+    cars/2003-evo-viii/roms/stock/bgutch_2003_evo8_11_11_2025.hex \
+    cars/2003-evo-viii/roms/tunes/bgutch_2003_evo8_11_11_2025_tune_010_wastegateclear.hex
 ```
