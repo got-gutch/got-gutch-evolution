@@ -12,10 +12,12 @@ Only `.hex` (Intel HEX) formats are tracked here as they are the primary flash a
 | 020 | [`e8-t020-mapscale.hex`](./e8-t020-mapscale.hex) | 2025-11-11 | Feb 2026 | MAP sensor scaling update |
 | 021 | [`e8-t021-mut1.hex`](./e8-t021-mut1.hex) | 2025-11-11 | Feb 2026 | Attempted MUT 2-byte load configuration (Failed) |
 | 022 | [`e8-t022-mut2.hex`](./e8-t022-mut2.hex) | 2025-11-11 | Feb 2026 | Refined MUT 2-byte load addresses (Failed) |
-| 023 | [`e8-t023-v1byte.hex`](./e8-t023-v1byte.hex) | 2025-11-11 | Feb 2026 | Revert to Tune 020 logic; Pivot to 1-byte load logging |
+| 023 | [`e8-t023-v1byte.hex`](./e8-t023-v1byte.hex) | 2025-11-11 | 2026-03-07 | Revert to Tune 020 logic; Pivot to 1-byte load logging |
 
 ## Tune Sequence Notes
 
+- **Flash History:**
+  - **Tune 023:** Flashed on 2026-03-07 at 08:55:00. This flash successfully reverted the ECU to Tune 020 logic while incorporating 1-byte load logging to bypass the 2-byte stability issues encountered in Tunes 021 and 022. Log preserved in [`023_tune.log`](./023_tune.log).
 - **Naming Convention:** All tunes now use the prefix `e8-tXXX` (Evo 8 - Tune XXX) followed by a short descriptor to fit within the narrow EvoScan "Write ROM" window.
 - **2-Byte vs 1-Byte Load:** After several attempts (Tunes 021/022) to stabilize 2-byte MUT load logging, the project is shifting to 1-byte load logging. While 1-byte has less precision, it is more reliable for tracking higher load boundaries without the offset/alignment issues encountered in the 2-byte attempts.
 - Tune numbers are zero-padded to 3 digits and increment by 10 within the same base ROM session, leaving room to insert tunes between existing ones.

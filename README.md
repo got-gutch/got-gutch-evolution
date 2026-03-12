@@ -26,6 +26,8 @@ got-gutch-evolution/
     └── boost_tuner.py          ← suggest WGDC updates for 3-port boost control
 ```
 
+![evo_and_rs.jpg](cars/evo_and_rs.jpg)
+
 ## Tooling
 
 All scripts require **Python 3.10+**. It is recommended to use a virtual environment.
