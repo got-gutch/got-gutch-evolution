@@ -112,3 +112,20 @@
 **Data Logs:** [EvoScanDataLog_2026.03.02_18.01.58.csv](../../logs/EvoScanDataLog_2026.03.02_18.01.58.csv) — see MAP column
 
 **References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
+
+---
+
+## STM Evo 7/8/9 O2 Downpipe — OEM-Style Housing
+
+| Field       | Value                                                |
+|-------------|------------------------------------------------------|
+| Part        | STM Evo 7/8/9 O2 Downpipe Recirculated for OEM-Style Housing |
+| Technician  | Eli at Tuned Up LLC                                  |
+| Installed   | March 2026 (scheduled next few days)                 |
+| Purpose     | Complete exhaust system upgrade — removes final restriction before turbo and exhaust manifold |
+
+**Notes:** This downpipe completes the full exhaust system overhaul. Previously, the only restricted component remaining in the exhaust path before the turbo and manifold was the OEM downpipe. With this STM unit installed, the entire exhaust system from the turbo outlet to the rear bumper will be optimized for flow. This will work in conjunction with the Boosted Fabrication Resonated Race Pipe and Tomei Cat-Back Exhaust already installed.
+
+**Data Logs:** *(to be added after installation)*
+
+**References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
