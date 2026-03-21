@@ -5,19 +5,21 @@ Only `.hex` (Intel HEX) formats are tracked here as they are the primary flash a
 
 ## Tune Inventory
 
-| Tune # | File | Base ROM Date | Flash Date | Description |
-|--------|------|---------------|------------|-------------|
-| 001 | [`e8-t001-rpm-limit.hex`](./e8-t001-rpm-limit.hex) | 2025-11-11 | 2026-02-18 | **First Flash:** RPM limit adjustment |
-| 010 | [`e8-t010-wgclear.hex`](./e8-t010-wgclear.hex) | 2025-11-11 | Feb 2026 | WGDC tables cleared; Boost Cut Delay Timer reduced; Turbo Boost Error Correct zeroed; boost load/limit tables updated |
-| 020 | [`e8-t020-mapscale.hex`](./e8-t020-mapscale.hex) | 2025-11-11 | Feb 2026 | MAP sensor scaling update |
-| 021 | [`e8-t021-mut1.hex`](./e8-t021-mut1.hex) | 2025-11-11 | Feb 2026 | Attempted MUT 2-byte load configuration (Failed) |
-| 022 | [`e8-t022-mut2.hex`](./e8-t022-mut2.hex) | 2025-11-11 | Feb 2026 | Refined MUT 2-byte load addresses (Failed) |
-| 023 | [`e8-t023-v1byte.hex`](./e8-t023-v1byte.hex) | 2025-11-11 | 2026-03-07 | Revert to Tune 020 logic; Pivot to 1-byte load logging |
+| Tune # | File | Base ROM Date | Flash Date | Description | Tune Log |
+|--------|------|---------------|------------|-------------|----------|
+| 001 | [`e8-t001-rpm-limit.hex`](./e8-t001-rpm-limit.hex) | 2025-11-11 | 2026-02-18 | **First Flash:** RPM limit adjustment |  |
+| 010 | [`e8-t010-wgclear.hex`](./e8-t010-wgclear.hex) | 2025-11-11 | Feb 2026 | WGDC tables cleared; Boost Cut Delay Timer reduced; Turbo Boost Error Correct zeroed; boost load/limit tables updated |  |
+| 020 | [`e8-t020-mapscale.hex`](./e8-t020-mapscale.hex) | 2025-11-11 | Feb 2026 | MAP sensor scaling update | [`020_tune.log`](./020_tune.log) |
+| 021 | [`e8-t021-mut1.hex`](./e8-t021-mut1.hex) | 2025-11-11 | Feb 2026 | Attempted MUT 2-byte load configuration (Failed) | [`021_tune.log`](./021_tune.log) |
+| 022 | [`e8-t022-mut2.hex`](./e8-t022-mut2.hex) | 2025-11-11 | Feb 2026 | Refined MUT 2-byte load addresses (Failed) | [`022_tune.log`](./022_tune.log) |
+| 023 | [`e8-t023-v1byte.hex`](./e8-t023-v1byte.hex) | 2025-11-11 | 2026-03-07 | Revert to Tune 020 logic; Pivot to 1-byte load logging | [`023_tune.log`](./023_tune.log) |
+| 030 | [`e8-t030-disable_cat.hex`](./e8-t030-disable_cat.hex) | 2025-11-11 | 2026-03-21 | Periphery code update to disable rear O2 sensor | [`030_tune.log`](./030_tune.log) |
 
 ## Tune Sequence Notes
 
 - **Flash History:**
-  - **Tune 023:** Flashed on 2026-03-07 at 08:55:00. This flash successfully reverted the ECU to Tune 020 logic while incorporating 1-byte load logging to bypass the 2-byte stability issues encountered in Tunes 021 and 022. Log preserved in [`023_tune.log`](./023_tune.log).
+  - **Tune 030:** Flashed on 2026-03-21. This update modified the Periphery code to disable the rear O2 sensor.
+  - **Tune 023:** Flashed on 2026-03-07 at 08:55:00. This flash successfully reverted the ECU to Tune 020 logic while incorporating 1-byte load logging to bypass the 2-byte stability issues encountered in Tunes 021 and 022.
 - **Tune 010 Notes:**
   - WGDC tables were zeroed out, except table 4, which was set to all `100` values.
   - Boost Cut Delay Timer was reduced to `500`.
