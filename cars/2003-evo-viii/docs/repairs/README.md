@@ -67,6 +67,20 @@ With control arms off to press in bushings, have Eli inspect the lower ball join
 
 ---
 
+## Rear Bushing Replacement
+
+| Field     | Value              |
+|-----------|--------------------|
+| Date      | March 20, 2026     |
+| Shop      | Tuned Up LLC       |
+| Notes     | Rear bushings replaced during the same visit as the STM downpipe install |
+
+**Related Logs:**
+- [EvoScanDataLog_2026.03.21_09.22.49.csv](../../logs/EvoScanDataLog_2026.03.21_09.22.49.csv)
+- [EvoScanDataLog_2026.03.21_09.25.58.csv](../../logs/EvoScanDataLog_2026.03.21_09.25.58.csv)
+
+---
+
 ## Template
 
 ```markdown

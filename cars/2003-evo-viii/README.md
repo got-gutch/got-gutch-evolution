@@ -56,3 +56,13 @@ But, after the motor in my 2017 Ford Focus RS died in 2025 I decided to start tu
 The idea is to create a car that doesn't have large HP numbers on paper, but is very responsive and fun to drive. I want 
 to be able to drive the car hard on the street without worrying about reliability or traction issues. But, I also want to 
 be able to take the car to the hard packed gravel or snow covered roads of PA and have fun there too.
+
+## Recent Service and Tuning
+
+- **March 20, 2026:** Tuned Up LLC installed the STM Evo 7/8/9 O2 downpipe and replaced the rear bushings.
+- **March 21, 2026:** Flashed `e8-t030-disable_cat.hex` and recorded the flash in `roms/tunes/030_tune.log`.
+- **Data logs from the post-install drives:**
+  - `logs/EvoScanDataLog_2026.03.21_09.22.49.csv`
+  - `logs/EvoScanDataLog_2026.03.21_09.25.58.csv`
+
+These changes are documented in more detail in `docs/modifications/README.md`.

@@ -121,11 +121,46 @@
 |-------------|------------------------------------------------------|
 | Part        | STM Evo 7/8/9 O2 Downpipe Recirculated for OEM-Style Housing |
 | Technician  | Eli at Tuned Up LLC                                  |
-| Installed   | March 2026 (scheduled next few days)                 |
-| Purpose     | Complete exhaust system upgrade — removes final restriction before turbo and exhaust manifold |
+| Installed   | March 20, 2026                                       |
+| Purpose     | Remove the factory downpipe restriction and improve exhaust flow |
 
-**Notes:** This downpipe completes the full exhaust system overhaul. Previously, the only restricted component remaining in the exhaust path before the turbo and manifold was the OEM downpipe. With this STM unit installed, the entire exhaust system from the turbo outlet to the rear bumper will be optimized for flow. This will work in conjunction with the Boosted Fabrication Resonated Race Pipe and Tomei Cat-Back Exhaust already installed.
+**Notes:** The STM downpipe was installed by Tuned Up LLC along with the rear bushing replacement. This completes the latest exhaust hardware change and pairs with the existing Boosted Fabrication resonated race pipe and Tomei cat-back exhaust.
 
-**Data Logs:** *(to be added after installation)*
+**Data Logs:**
+- [EvoScanDataLog_2026.03.21_09.22.49.csv](../../logs/EvoScanDataLog_2026.03.21_09.22.49.csv)
+- [EvoScanDataLog_2026.03.21_09.25.58.csv](../../logs/EvoScanDataLog_2026.03.21_09.25.58.csv)
 
-**References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
+---
+
+## Rear Bushing Replacement
+
+| Field       | Value                      |
+|-------------|----------------------------|
+| Installed   | March 20, 2026             |
+| Reason      | Replacement / refresh      |
+| Shop        | Tuned Up LLC               |
+
+**Notes:** Rear bushings were replaced during the same service visit as the STM downpipe installation.
+
+**Data Logs:**
+- [EvoScanDataLog_2026.03.21_09.22.49.csv](../../logs/EvoScanDataLog_2026.03.21_09.22.49.csv)
+- [EvoScanDataLog_2026.03.21_09.25.58.csv](../../logs/EvoScanDataLog_2026.03.21_09.25.58.csv)
+
+---
+
+## ROM Flash — `e8-t030-disable_cat.hex`
+
+| Field       | Value |
+|-------------|-------|
+| ROM       | `e8-t030-disable_cat.hex` |
+| Flash Log | `030_tune.log` |
+| Flashed   | March 21, 2026 |
+| Purpose   | Disable cat-related behavior after the downpipe install |
+
+**Notes:** The flash completed successfully and the verify pass matched all ECU pages. The log shows only `FB01` changed, which is consistent with a targeted tune update.
+
+**Data Logs:**
+- [EvoScanDataLog_2026.03.21_09.22.49.csv](../../logs/EvoScanDataLog_2026.03.21_09.22.49.csv)
+- [EvoScanDataLog_2026.03.21_09.25.58.csv](../../logs/EvoScanDataLog_2026.03.21_09.25.58.csv)
+
+---

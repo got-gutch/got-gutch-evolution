@@ -29,6 +29,13 @@ bgutch_2003_evo8_02_18_2026_tune_001_rpm_limit.bin
 bgutch_2003_evo8_02_18_2026_tune_001_rpm_limit.hex
 ```
 
+## Current Tune Example
+
+- `e8-t030-disable_cat.hex`
+- Flash log: `tunes/030_tune.log`
+
+This flash completed successfully and verified cleanly across all ECU pages.
+
 ## Directory Layout
 
 | Directory | Contents                                                     |
