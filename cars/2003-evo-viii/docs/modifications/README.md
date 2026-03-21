@@ -54,10 +54,10 @@
 | Field       | Value                                        |
 |-------------|---------------------------------------------|
 | Part        | Meagan Racing Radiator                       |
-| Installed   | 2014–2026 (exact date unknown)               |
+| Installed   | On or around Dec 3, 2025                     |
 | Purpose     | Improved cooling capacity                    |
 
-**References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
+**References / YouTube Shorts:** https://youtube.com/shorts/M4zNpgPBOyk?si=UKC8vTpiQe7WUJKZ
 
 ---
 

@@ -4,33 +4,8 @@ YouTube channel: https://www.youtube.com/@bradgutch — shorts for this car have
 
 Document significant repairs here. Include the date, parts used, reason, and a link to the specific YouTube short if available.
 
-## Rear Suspension Bushing Refresh — Powerflex Purple (Street)
-
-| Field     | Value        |
-|-----------|-------------|
-| Date      | March 2026   |
-| Technician| Eli at Tuned Up LLC |
-| Parts     | Rear Upper Arm Bushings (PFR44-109 — "goo" fix), Rear Toe Arm Bushings (PFR44-115), Rear Lower Track Arm Outers (PFR44-112), Rear Lower Track Arm Inners (PFR44-111) |
-| Reason    | Identified leaking bushings in the rear suspension requiring replacement with Powerflex Purple (Street) grade polyurethane for improved durability and handling. |
-| Notes     | All rear Powerflex Purple components installed by Eli for a complete rear suspension refresh. |
-
-**References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
-
----
-
-## Exhaust System Upgrade & Exterior Trim — Northfield Collision
-
-| Field     | Value        |
-|-----------|-------------|
-| Date      | March 1, 2026   |
-| Technician| Northfield Collision |
-| Parts     | Tomei Cat-Back Exhaust with Boosted Fabrication Resonated Race Pipe, New Drip Molding |
-| Reason    | Upgraded exhaust system for improved flow and performance characteristics. Replaced damaged/aged drip molding as part of exterior restoration. |
-| Notes     | Tomei exhaust paired with FB resonator installed. This exhaust modification triggered P0421 (Catalyst Efficiency) code due to race pipe. Code was subsequently disabled via ECU tuning by zeroing WGDC tables and disabling rear O2 sensor monitoring bit. **Issue Found:** After driving the car a few times, the drip molding clips were not holding properly, requiring a future repair. |
-
-**References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
-
----
+<details>
+<summary><strong>Future Repairs</strong></summary>
 
 ## FUTURE: Catalytic Converter Flange Stud Removal & Drip Molding Clip Repair
 
@@ -65,19 +40,39 @@ The PFF44-202G kit physically cannot bottom out like the stock rubber does when 
 **Recommended Action During Service:**  
 With control arms off to press in bushings, have Eli inspect the lower ball joints. If original, they are likely equally worn and should be replaced at the same time.
 
+</details>
+
 ---
 
-## Rear Bushing Replacement
+## Rear Suspension Bushing Refresh — Powerflex Purple (Street)
 
-| Field     | Value              |
-|-----------|--------------------|
-| Date      | March 20, 2026     |
-| Shop      | Tuned Up LLC       |
-| Notes     | Rear bushings replaced during the same visit as the STM downpipe install |
+| Field     | Value        |
+|-----------|-------------|
+| Date      | March 2026   |
+| Technician| Eli at Tuned Up LLC |
+| Parts     | Rear Upper Arm Bushings (PFR44-109 — "goo" fix), Rear Toe Arm Bushings (PFR44-115), Rear Lower Track Arm Outers (PFR44-112), Rear Lower Track Arm Inners (PFR44-111) |
+| Reason    | Identified leaking bushings in the rear suspension requiring replacement with Powerflex Purple (Street) grade polyurethane for improved durability and handling. |
+| Notes     | All rear Powerflex Purple components installed by Eli for a complete rear suspension refresh. Rear bushings were replaced during the same visit as the STM downpipe install on March 20, 2026. |
 
 **Related Logs:**
 - [EvoScanDataLog_2026.03.21_09.22.49.csv](../../logs/EvoScanDataLog_2026.03.21_09.22.49.csv)
 - [EvoScanDataLog_2026.03.21_09.25.58.csv](../../logs/EvoScanDataLog_2026.03.21_09.25.58.csv)
+
+**References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
+
+---
+
+## Exhaust System Upgrade & Exterior Trim — Northfield Collision
+
+| Field     | Value        |
+|-----------|-------------|
+| Date      | March 1, 2026   |
+| Technician| Northfield Collision |
+| Parts     | Tomei Cat-Back Exhaust with Boosted Fabrication Resonated Race Pipe, New Drip Molding |
+| Reason    | Upgraded exhaust system for improved flow and performance characteristics. Replaced damaged/aged drip molding as part of exterior restoration. |
+| Notes     | Tomei exhaust paired with FB resonator installed. This exhaust modification triggered P0421 (Catalyst Efficiency) code due to race pipe. Code was subsequently disabled via ECU tuning by zeroing WGDC tables and disabling rear O2 sensor monitoring bit. **Issue Found:** After driving the car a few times, the drip molding clips were not holding properly, requiring a future repair. |
+
+**References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
 
 ---
 
