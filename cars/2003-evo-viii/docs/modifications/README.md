@@ -148,6 +148,20 @@
 
 ---
 
+## Boost Solenoid Vent — Muffler Redirect
+
+| Field       | Value                                                |
+|-------------|------------------------------------------------------|
+| Installed   | April 5, 2026 (Easter 2026)                          |
+| Reason      | Resolve boost solenoid issues; reduce intake contamination |
+| Purpose     | Redirect boost solenoid vent from intake/input to a dedicated muffler |
+
+**Notes:** Previously, the boost solenoid (3-port wastegate solenoid) was venting back to the intake/input. The vent line has been rerouted to a muffler so it vents to atmosphere through the muffler instead. This change resolved the boost solenoid issues that were present on the car. The car was reassembled and returned to service on Easter 2026.
+
+**References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
+
+---
+
 ## ROM Flash — `e8-t030-disable_cat.hex`
 
 | Field       | Value |
