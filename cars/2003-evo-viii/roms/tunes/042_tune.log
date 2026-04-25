@@ -1,0 +1,297 @@
+flashing tool "mitsukernel" loaded.
+flashing tool "mitsukernelocp" loaded.
+flashing tool "mitsubootloader" loaded.
+OpenPort Cable Connected.
+262144 byte image read.
+3392 byte kernel read.
+sending init sequence 1 (0001)
+got 0x05 response
+sending init sequence 2
+got 0x1B response
+sending init sequence 3
+entering bootloader
+sending kernel size (3392)
+sending kernel load address (0xFFFF8800)
+uploading kernel
+verifying kernel checksum response
+kernel valid
+kernel get version
+kernel version is : OpenECU Mitsubishi SH7052 Kernel V0.21
+Flashing image to ECU memory...
+comparing ECU flash memory pages to image file
+segment   len   ecu CRC32    img CRC32    same?
+FB01 00001000   FA499AC1     FA499AC1     YES
+FB02 00001000   930C86BD     930C86BD     YES
+FB03 00001000   9EBEFC12     9EBEFC12     YES
+FB04 00001000   142CFC9F     142CFC9F     YES
+FB05 00001000   D923C020     D923C020     YES
+FB06 00001000   07492739     07492739     YES
+FB07 00001000   5F510FA9     5F510FA9     YES
+FB08 00001000   AF5BF200     AF5BF200     YES
+FB09 00008000   4478211C     EC313818      NO
+FB10 00010000   3EBCEA7A     3EBCEA7A     YES
+FB11 00010000   0127AD4F     0127AD4F     YES
+FB12 00010000   A153A12D     99812499      NO
+kernel flash enable
+20:18:54  kernel blank flash page: addr: 00030000
+20:18:54  erased in 2 pulse(s)
+20:18:54  kernel write flash buffer addr: 00030000 len: 00000200
+20:18:55  kernel write flash buffer addr: 00030200 len: 00000200
+20:18:55  kernel write flash buffer addr: 00030400 len: 00000200
+20:18:55  kernel write flash buffer addr: 00030600 len: 00000200
+20:18:55  kernel write flash buffer addr: 00030800 len: 00000200
+20:18:55  kernel write flash buffer addr: 00030A00 len: 00000200
+20:18:55  kernel write flash buffer addr: 00030C00 len: 00000200
+20:18:55  kernel write flash buffer addr: 00030E00 len: 00000200
+20:18:55  kernel commit flash addr: 00030000 crc32 B3A28A98
+20:18:56  written in 28 pulse(s)
+20:18:56  kernel write flash buffer addr: 00031000 len: 00000200
+20:18:56  kernel write flash buffer addr: 00031200 len: 00000200
+20:18:56  kernel write flash buffer addr: 00031400 len: 00000200
+20:18:56  kernel write flash buffer addr: 00031600 len: 00000200
+20:18:56  kernel write flash buffer addr: 00031800 len: 00000200
+20:18:56  kernel write flash buffer addr: 00031A00 len: 00000200
+20:18:56  kernel write flash buffer addr: 00031C00 len: 00000200
+20:18:57  kernel write flash buffer addr: 00031E00 len: 00000200
+20:18:57  kernel commit flash addr: 00031000 crc32 0E7E2A06
+20:18:57  written in 28 pulse(s)
+20:18:57  kernel write flash buffer addr: 00032000 len: 00000200
+20:18:57  kernel write flash buffer addr: 00032200 len: 00000200
+20:18:57  kernel write flash buffer addr: 00032400 len: 00000200
+20:18:57  kernel write flash buffer addr: 00032600 len: 00000200
+20:18:58  kernel write flash buffer addr: 00032800 len: 00000200
+20:18:58  kernel write flash buffer addr: 00032A00 len: 00000200
+20:18:58  kernel write flash buffer addr: 00032C00 len: 00000200
+20:18:58  kernel write flash buffer addr: 00032E00 len: 00000200
+20:18:58  kernel commit flash addr: 00032000 crc32 0CD0EFF5
+20:18:58  written in 28 pulse(s)
+20:18:58  kernel write flash buffer addr: 00033000 len: 00000200
+20:18:59  kernel write flash buffer addr: 00033200 len: 00000200
+20:18:59  kernel write flash buffer addr: 00033400 len: 00000200
+20:18:59  kernel write flash buffer addr: 00033600 len: 00000200
+20:18:59  kernel write flash buffer addr: 00033800 len: 00000200
+20:18:59  kernel write flash buffer addr: 00033A00 len: 00000200
+20:18:59  kernel write flash buffer addr: 00033C00 len: 00000200
+20:18:59  kernel write flash buffer addr: 00033E00 len: 00000200
+20:18:59  kernel commit flash addr: 00033000 crc32 07442C0E
+20:19:00  written in 28 pulse(s)
+20:19:00  kernel write flash buffer addr: 00034000 len: 00000200
+20:19:00  kernel write flash buffer addr: 00034200 len: 00000200
+20:19:00  kernel write flash buffer addr: 00034400 len: 00000200
+20:19:00  kernel write flash buffer addr: 00034600 len: 00000200
+20:19:00  kernel write flash buffer addr: 00034800 len: 00000200
+20:19:00  kernel write flash buffer addr: 00034A00 len: 00000200
+20:19:00  kernel write flash buffer addr: 00034C00 len: 00000200
+20:19:01  kernel write flash buffer addr: 00034E00 len: 00000200
+20:19:01  kernel commit flash addr: 00034000 crc32 EFAD97BD
+20:19:01  written in 28 pulse(s)
+20:19:01  kernel write flash buffer addr: 00035000 len: 00000200
+20:19:01  kernel write flash buffer addr: 00035200 len: 00000200
+20:19:01  kernel write flash buffer addr: 00035400 len: 00000200
+20:19:01  kernel write flash buffer addr: 00035600 len: 00000200
+20:19:02  kernel write flash buffer addr: 00035800 len: 00000200
+20:19:02  kernel write flash buffer addr: 00035A00 len: 00000200
+20:19:02  kernel write flash buffer addr: 00035C00 len: 00000200
+20:19:02  kernel write flash buffer addr: 00035E00 len: 00000200
+20:19:02  kernel commit flash addr: 00035000 crc32 77DFBFD3
+20:19:02  written in 28 pulse(s)
+20:19:02  kernel write flash buffer addr: 00036000 len: 00000200
+20:19:03  kernel write flash buffer addr: 00036200 len: 00000200
+20:19:03  kernel write flash buffer addr: 00036400 len: 00000200
+20:19:03  kernel write flash buffer addr: 00036600 len: 00000200
+20:19:03  kernel write flash buffer addr: 00036800 len: 00000200
+20:19:03  kernel write flash buffer addr: 00036A00 len: 00000200
+20:19:03  kernel write flash buffer addr: 00036C00 len: 00000200
+20:19:03  kernel write flash buffer addr: 00036E00 len: 00000200
+20:19:03  kernel commit flash addr: 00036000 crc32 48720238
+20:19:04  written in 28 pulse(s)
+20:19:04  kernel write flash buffer addr: 00037000 len: 00000200
+20:19:04  kernel write flash buffer addr: 00037200 len: 00000200
+20:19:04  kernel write flash buffer addr: 00037400 len: 00000200
+20:19:04  kernel write flash buffer addr: 00037600 len: 00000200
+20:19:04  kernel write flash buffer addr: 00037800 len: 00000200
+20:19:04  kernel write flash buffer addr: 00037A00 len: 00000200
+20:19:04  kernel write flash buffer addr: 00037C00 len: 00000200
+20:19:05  kernel write flash buffer addr: 00037E00 len: 00000200
+20:19:05  kernel commit flash addr: 00037000 crc32 AB93D7C5
+20:19:05  written in 26 pulse(s)
+20:19:05  kernel write flash buffer addr: 00038000 len: 00000200
+20:19:05  kernel write flash buffer addr: 00038200 len: 00000200
+20:19:05  kernel write flash buffer addr: 00038400 len: 00000200
+20:19:06  kernel write flash buffer addr: 00038600 len: 00000200
+20:19:06  kernel write flash buffer addr: 00038800 len: 00000200
+20:19:06  kernel write flash buffer addr: 00038A00 len: 00000200
+20:19:06  kernel write flash buffer addr: 00038C00 len: 00000200
+20:19:06  kernel write flash buffer addr: 00038E00 len: 00000200
+20:19:06  kernel commit flash addr: 00038000 crc32 10407104
+20:19:06  written in 30 pulse(s)
+20:19:06  kernel write flash buffer addr: 00039000 len: 00000200
+20:19:06  kernel write flash buffer addr: 00039200 len: 00000200
+20:19:07  kernel write flash buffer addr: 00039400 len: 00000200
+20:19:07  kernel write flash buffer addr: 00039600 len: 00000200
+20:19:07  kernel write flash buffer addr: 00039800 len: 00000200
+20:19:07  kernel write flash buffer addr: 00039A00 len: 00000200
+20:19:07  kernel write flash buffer addr: 00039C00 len: 00000200
+20:19:07  kernel write flash buffer addr: 00039E00 len: 00000200
+20:19:07  kernel commit flash addr: 00039000 crc32 F154670A
+20:19:07  written in 2 pulse(s)
+20:19:07  kernel write flash buffer addr: 0003A000 len: 00000200
+20:19:08  kernel write flash buffer addr: 0003A200 len: 00000200
+20:19:08  kernel write flash buffer addr: 0003A400 len: 00000200
+20:19:08  kernel write flash buffer addr: 0003A600 len: 00000200
+20:19:08  kernel write flash buffer addr: 0003A800 len: 00000200
+20:19:08  kernel write flash buffer addr: 0003AA00 len: 00000200
+20:19:08  kernel write flash buffer addr: 0003AC00 len: 00000200
+20:19:08  kernel write flash buffer addr: 0003AE00 len: 00000200
+20:19:08  kernel commit flash addr: 0003A000 crc32 F154670A
+20:19:08  written in 2 pulse(s)
+20:19:08  kernel write flash buffer addr: 0003B000 len: 00000200
+20:19:09  kernel write flash buffer addr: 0003B200 len: 00000200
+20:19:09  kernel write flash buffer addr: 0003B400 len: 00000200
+20:19:09  kernel write flash buffer addr: 0003B600 len: 00000200
+20:19:09  kernel write flash buffer addr: 0003B800 len: 00000200
+20:19:09  kernel write flash buffer addr: 0003BA00 len: 00000200
+20:19:09  kernel write flash buffer addr: 0003BC00 len: 00000200
+20:19:09  kernel write flash buffer addr: 0003BE00 len: 00000200
+20:19:09  kernel commit flash addr: 0003B000 crc32 F154670A
+20:19:09  written in 2 pulse(s)
+20:19:09  kernel write flash buffer addr: 0003C000 len: 00000200
+20:19:10  kernel write flash buffer addr: 0003C200 len: 00000200
+20:19:10  kernel write flash buffer addr: 0003C400 len: 00000200
+20:19:10  kernel write flash buffer addr: 0003C600 len: 00000200
+20:19:10  kernel write flash buffer addr: 0003C800 len: 00000200
+20:19:10  kernel write flash buffer addr: 0003CA00 len: 00000200
+20:19:10  kernel write flash buffer addr: 0003CC00 len: 00000200
+20:19:10  kernel write flash buffer addr: 0003CE00 len: 00000200
+20:19:10  kernel commit flash addr: 0003C000 crc32 F154670A
+20:19:11  written in 2 pulse(s)
+20:19:11  kernel write flash buffer addr: 0003D000 len: 00000200
+20:19:11  kernel write flash buffer addr: 0003D200 len: 00000200
+20:19:11  kernel write flash buffer addr: 0003D400 len: 00000200
+20:19:11  kernel write flash buffer addr: 0003D600 len: 00000200
+20:19:11  kernel write flash buffer addr: 0003D800 len: 00000200
+20:19:11  kernel write flash buffer addr: 0003DA00 len: 00000200
+20:19:11  kernel write flash buffer addr: 0003DC00 len: 00000200
+20:19:11  kernel write flash buffer addr: 0003DE00 len: 00000200
+20:19:12  kernel commit flash addr: 0003D000 crc32 F154670A
+20:19:12  written in 2 pulse(s)
+20:19:12  kernel write flash buffer addr: 0003E000 len: 00000200
+20:19:12  kernel write flash buffer addr: 0003E200 len: 00000200
+20:19:12  kernel write flash buffer addr: 0003E400 len: 00000200
+20:19:12  kernel write flash buffer addr: 0003E600 len: 00000200
+20:19:12  kernel write flash buffer addr: 0003E800 len: 00000200
+20:19:12  kernel write flash buffer addr: 0003EA00 len: 00000200
+20:19:12  kernel write flash buffer addr: 0003EC00 len: 00000200
+20:19:13  kernel write flash buffer addr: 0003EE00 len: 00000200
+20:19:13  kernel commit flash addr: 0003E000 crc32 F154670A
+20:19:13  written in 2 pulse(s)
+20:19:13  kernel write flash buffer addr: 0003F000 len: 00000200
+20:19:13  kernel write flash buffer addr: 0003F200 len: 00000200
+20:19:13  kernel write flash buffer addr: 0003F400 len: 00000200
+20:19:13  kernel write flash buffer addr: 0003F600 len: 00000200
+20:19:13  kernel write flash buffer addr: 0003F800 len: 00000200
+20:19:13  kernel write flash buffer addr: 0003FA00 len: 00000200
+20:19:13  kernel write flash buffer addr: 0003FC00 len: 00000200
+20:19:14  kernel write flash buffer addr: 0003FE00 len: 00000200
+20:19:14  kernel commit flash addr: 0003F000 crc32 B10313BB
+20:19:14  written in 30 pulse(s)
+20:19:14  kernel blank flash page: addr: 00008000
+20:19:14  erased in 2 pulse(s)
+20:19:14  kernel write flash buffer addr: 00008000 len: 00000200
+20:19:14  kernel write flash buffer addr: 00008200 len: 00000200
+20:19:14  kernel write flash buffer addr: 00008400 len: 00000200
+20:19:14  kernel write flash buffer addr: 00008600 len: 00000200
+20:19:14  kernel write flash buffer addr: 00008800 len: 00000200
+20:19:15  kernel write flash buffer addr: 00008A00 len: 00000200
+20:19:15  kernel write flash buffer addr: 00008C00 len: 00000200
+20:19:15  kernel write flash buffer addr: 00008E00 len: 00000200
+20:19:15  kernel commit flash addr: 00008000 crc32 D78CFFAF
+20:19:15  written in 26 pulse(s)
+20:19:15  kernel write flash buffer addr: 00009000 len: 00000200
+20:19:15  kernel write flash buffer addr: 00009200 len: 00000200
+20:19:16  kernel write flash buffer addr: 00009400 len: 00000200
+20:19:16  kernel write flash buffer addr: 00009600 len: 00000200
+20:19:16  kernel write flash buffer addr: 00009800 len: 00000200
+20:19:16  kernel write flash buffer addr: 00009A00 len: 00000200
+20:19:16  kernel write flash buffer addr: 00009C00 len: 00000200
+20:19:16  kernel write flash buffer addr: 00009E00 len: 00000200
+20:19:16  kernel commit flash addr: 00009000 crc32 7C75F103
+20:19:17  written in 28 pulse(s)
+20:19:17  kernel write flash buffer addr: 0000A000 len: 00000200
+20:19:17  kernel write flash buffer addr: 0000A200 len: 00000200
+20:19:17  kernel write flash buffer addr: 0000A400 len: 00000200
+20:19:17  kernel write flash buffer addr: 0000A600 len: 00000200
+20:19:17  kernel write flash buffer addr: 0000A800 len: 00000200
+20:19:17  kernel write flash buffer addr: 0000AA00 len: 00000200
+20:19:18  kernel write flash buffer addr: 0000AC00 len: 00000200
+20:19:18  kernel write flash buffer addr: 0000AE00 len: 00000200
+20:19:18  kernel commit flash addr: 0000A000 crc32 BE5980DC
+20:19:18  written in 30 pulse(s)
+20:19:18  kernel write flash buffer addr: 0000B000 len: 00000200
+20:19:18  kernel write flash buffer addr: 0000B200 len: 00000200
+20:19:19  kernel write flash buffer addr: 0000B400 len: 00000200
+20:19:19  kernel write flash buffer addr: 0000B600 len: 00000200
+20:19:19  kernel write flash buffer addr: 0000B800 len: 00000200
+20:19:19  kernel write flash buffer addr: 0000BA00 len: 00000200
+20:19:19  kernel write flash buffer addr: 0000BC00 len: 00000200
+20:19:19  kernel write flash buffer addr: 0000BE00 len: 00000200
+20:19:19  kernel commit flash addr: 0000B000 crc32 7C55B96D
+20:19:20  written in 30 pulse(s)
+20:19:20  kernel write flash buffer addr: 0000C000 len: 00000200
+20:19:20  kernel write flash buffer addr: 0000C200 len: 00000200
+20:19:20  kernel write flash buffer addr: 0000C400 len: 00000200
+20:19:20  kernel write flash buffer addr: 0000C600 len: 00000200
+20:19:20  kernel write flash buffer addr: 0000C800 len: 00000200
+20:19:20  kernel write flash buffer addr: 0000CA00 len: 00000200
+20:19:21  kernel write flash buffer addr: 0000CC00 len: 00000200
+20:19:21  kernel write flash buffer addr: 0000CE00 len: 00000200
+20:19:21  kernel commit flash addr: 0000C000 crc32 A2ED35D1
+20:19:21  written in 28 pulse(s)
+20:19:21  kernel write flash buffer addr: 0000D000 len: 00000200
+20:19:21  kernel write flash buffer addr: 0000D200 len: 00000200
+20:19:21  kernel write flash buffer addr: 0000D400 len: 00000200
+20:19:22  kernel write flash buffer addr: 0000D600 len: 00000200
+20:19:22  kernel write flash buffer addr: 0000D800 len: 00000200
+20:19:22  kernel write flash buffer addr: 0000DA00 len: 00000200
+20:19:22  kernel write flash buffer addr: 0000DC00 len: 00000200
+20:19:22  kernel write flash buffer addr: 0000DE00 len: 00000200
+20:19:22  kernel commit flash addr: 0000D000 crc32 C579C3D9
+20:19:23  written in 28 pulse(s)
+20:19:23  kernel write flash buffer addr: 0000E000 len: 00000200
+20:19:23  kernel write flash buffer addr: 0000E200 len: 00000200
+20:19:23  kernel write flash buffer addr: 0000E400 len: 00000200
+20:19:23  kernel write flash buffer addr: 0000E600 len: 00000200
+20:19:23  kernel write flash buffer addr: 0000E800 len: 00000200
+20:19:23  kernel write flash buffer addr: 0000EA00 len: 00000200
+20:19:23  kernel write flash buffer addr: 0000EC00 len: 00000200
+20:19:24  kernel write flash buffer addr: 0000EE00 len: 00000200
+20:19:24  kernel commit flash addr: 0000E000 crc32 37E14535
+20:19:24  written in 30 pulse(s)
+20:19:24  kernel write flash buffer addr: 0000F000 len: 00000200
+20:19:24  kernel write flash buffer addr: 0000F200 len: 00000200
+20:19:24  kernel write flash buffer addr: 0000F400 len: 00000200
+20:19:24  kernel write flash buffer addr: 0000F600 len: 00000200
+20:19:25  kernel write flash buffer addr: 0000F800 len: 00000200
+20:19:25  kernel write flash buffer addr: 0000FA00 len: 00000200
+20:19:25  kernel write flash buffer addr: 0000FC00 len: 00000200
+20:19:25  kernel write flash buffer addr: 0000FE00 len: 00000200
+20:19:25  kernel commit flash addr: 0000F000 crc32 3C95CF03
+20:19:25  written in 28 pulse(s)
+kernel flash disable
+verifying result...
+comparing ECU flash memory pages to image file
+segment   len   ecu CRC32    img CRC32    same?
+FB01 00001000   FA499AC1     FA499AC1     YES
+FB02 00001000   930C86BD     930C86BD     YES
+FB03 00001000   9EBEFC12     9EBEFC12     YES
+FB04 00001000   142CFC9F     142CFC9F     YES
+FB05 00001000   D923C020     D923C020     YES
+FB06 00001000   07492739     07492739     YES
+FB07 00001000   5F510FA9     5F510FA9     YES
+FB08 00001000   AF5BF200     AF5BF200     YES
+FB09 00008000   EC313818     EC313818     YES
+FB10 00010000   3EBCEA7A     3EBCEA7A     YES
+FB11 00010000   0127AD4F     0127AD4F     YES
+FB12 00010000   99812499     99812499     YES
+flash correct! exiting.
+interface close

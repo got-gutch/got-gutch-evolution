@@ -164,3 +164,31 @@
 - [EvoScanDataLog_2026.03.21_09.25.58.csv](../../logs/EvoScanDataLog_2026.03.21_09.25.58.csv)
 
 ---
+
+## AEM TruBoost Controller Relocation
+
+| Field       | Value                          |
+|-------------|-------------------------------|
+| Part        | AEM TruBoost Controller        |
+| Date        | April 25, 2026                |
+| Purpose     | Relocate for better access/performance |
+
+**Notes:**
+*   **Date:** 2026-04-25
+*   **Mileage:** 96,000 miles
+
+Moved the existing AEM TruBoost controller, mounting the solenoid on the radiator shroud and reconnecting the vacuum lines.
+
+During initial testing, observed significant boost spikes at wide-open throttle. The boost would spike rapidly, causing the ECU to cut throttle or hit a boost limiter, resulting in a sudden drop in power.
+
+![Boost Spike Graph](../../logs/boost_drop_04_25_2026.png)
+
+The graph above shows the boost pressure (purple line) spiking and then dropping while the throttle position (red line) is still at 100%.
+
+**Recommended Action:**
+To smooth out the boost curve and prevent dangerous spikes, the next step is to adjust the wastegate. The plan is to reduce the wastegate crack pressure to make the wastegate open earlier, thus slowing the spool and preventing overshoot. This will be managed via the AEM TruBoost controller settings.
+
+**Data Logs:**
+- [EvoScanDataLog_2026.04.25_05.55.56.csv](../../logs/EvoScanDataLog_2026.04.25_05.55.56.csv)
+- [EvoScanDataLog_2026.04.25_06.02.25.csv](../../logs/EvoScanDataLog_2026.04.25_06.02.25.csv)
+

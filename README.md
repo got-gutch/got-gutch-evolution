@@ -23,7 +23,10 @@ got-gutch-evolution/
     ├── evoscan_parser.py       ← parse EvoScan 2.9 data log CSV files
     ├── rom_manager.py          ← list, compare and diff ROM files
     ├── tune_tables.py          ← extract octane / ignition tables from ROM files
-    └── boost_tuner.py          ← suggest WGDC updates for 3-port boost control
+    ├── boost_tuner.py          ← suggest WGDC updates for 3-port boost control
+    ├── rom_mut_finder.py       ← find MUT table base addresses in ROM files (heuristic scan)
+    ├── mut_table_analyzer.py   ← analyze and compare MUT table candidates in detail
+    └── quick_mut_check.py      ← quick validation of specific MUT table offsets
 ```
 
 ![evo_and_rs.jpg](cars/evo_and_rs.jpg)
@@ -93,6 +96,43 @@ Analyze WOT pulls to validate plumbing logic and suggest Wastegate Duty Cycle (W
 # Analyze a log to check spring pressure or suggested WGDC increases
 python scripts/boost_tuner.py cars/2003-evo-viii/logs/EvoScanDataLog_2026.03.02_18.01.58.csv --target 21.0 --spring 12.0
 ```
+
+### MUT table finder
+
+Find and analyze MUT (Monitor Unit Table) base addresses in ROM files. The MUT table maps request IDs to RAM addresses for datalogging.
+
+```bash
+# Scan ROM file(s) for MUT table candidates
+python scripts/rom_mut_finder.py cars/2003-evo-viii/roms/tunes/e8-t041-2byte_logging.hex --top 12
+
+# Compare across multiple ROM versions (recommended for better accuracy)
+python scripts/rom_mut_finder.py \
+    cars/2003-evo-viii/roms/tunes/e8-t030-disable_cat.hex \
+    cars/2003-evo-viii/roms/tunes/e8-t041-2byte_logging.hex \
+    --known-request "21:921A" --known-request "17:9134" \
+    --top 12
+
+# Show full table layout for top candidates
+python scripts/rom_mut_finder.py cars/2003-evo-viii/roms/tunes/e8-t041-2byte_logging.hex --top 3 --verbose
+
+# Analyze a specific candidate offset in detail
+python scripts/mut_table_analyzer.py \
+    cars/2003-evo-viii/roms/tunes/e8-t041-2byte_logging.hex \
+    --offset 0xFE5E
+
+# Compare MUT tables across ROM versions
+python scripts/mut_table_analyzer.py \
+    cars/2003-evo-viii/roms/tunes/e8-t040-2byte_logging.hex \
+    cars/2003-evo-viii/roms/tunes/e8-t041-2byte_logging.hex \
+    --offset 0xFE5E --compare --xml
+
+# Quick validation of specific offsets
+python scripts/quick_mut_check.py \
+    cars/2003-evo-viii/roms/tunes/e8-t041-2byte_logging.hex \
+    0xFE5A 0xFE5E 0xFE60
+```
+
+See [scripts/MUT_FINDER_GUIDE.md](scripts/MUT_FINDER_GUIDE.md) for detailed usage and [ANALYSIS_run_001.md](ANALYSIS_run_001.md) for analysis of recent results.
 
 ## ROM Naming Convention
 

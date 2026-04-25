@@ -14,12 +14,35 @@ Only `.hex` (Intel HEX) formats are tracked here as they are the primary flash a
 | 022 | [`e8-t022-mut2.hex`](./e8-t022-mut2.hex) | 2025-11-11 | Feb 2026 | Refined MUT 2-byte load addresses (Failed) | [`022_tune.log`](./022_tune.log) |
 | 023 | [`e8-t023-v1byte.hex`](./e8-t023-v1byte.hex) | 2025-11-11 | 2026-03-07 | Revert to Tune 020 logic; Pivot to 1-byte load logging | [`023_tune.log`](./023_tune.log) |
 | 030 | [`e8-t030-disable_cat.hex`](./e8-t030-disable_cat.hex) | 2025-11-11 | 2026-03-21 | Periphery code update to disable rear O2 sensor | [`030_tune.log`](./030_tune.log) |
+| 040 | [`e8-t040-2byte_logging.hex`](./e8-t040-2byte_logging.hex) | 2025-11-11 | 2026-03-22 | First MUT-table update for 2-byte load logging |  |
+| 041 | [`e8-t041-2byte_logging.hex`](./e8-t041-2byte_logging.hex) | 2025-11-11 | 2026-03-22 | Corrective MUT-table update for Evo 8 2-byte logging addresses | [`041_tune.log`](./041_tune.log) |
 
 ## Tune Sequence Notes
 
 - **Flash History:**
+  - **Tune 041:** Flashed on 2026-03-22. This flash corrected the earlier 2-byte logging MUT-table edits and verified cleanly in [`041_tune.log`](./041_tune.log).
+  - **Tune 040:** Flashed on 2026-03-22 as the first dedicated 2-byte logging MUT-table experiment.
   - **Tune 030:** Flashed on 2026-03-21. This update modified the Periphery code to disable the rear O2 sensor.
   - **Tune 023:** Flashed on 2026-03-07 at 08:55:00. This flash successfully reverted the ECU to Tune 020 logic while incorporating 1-byte load logging to bypass the 2-byte stability issues encountered in Tunes 021 and 022.
+- **Tune 040/041 MUT Table Notes:**
+  - Strict ROM diffs confirmed that Tune 040 changed only 8 bytes and Tune 041 changed only 8 bytes, all in the MUT-table region.
+  - **Tune 030 → Tune 040** changed four 16-bit entries:
+    - `0x96C8`: `0x1121` → `0x6B12`
+    - `0x96CA`: `0x1122` → `0xFFFF`
+    - `0x96CC`: `0x1120` → `0x6AFE`
+    - `0x96DA`: `0x0000` → `0x6A14`
+  - **Tune 040 → Tune 041** changed four 16-bit entries:
+    - `0x96C8`: `0x6B12` → `0x895C`
+    - `0x96CA`: `0xFFFF` → `0x8940`
+    - `0x96D6`: `0x0000` → `0x6A14`
+    - `0x96E2`: `0x0000` → `0x6A3E`
+  - Combined entry evolution across the 030 → 041 sequence:
+    - `0x1121` → `0x6B12` → `0x895C`
+    - `0x1122` → `0xFFFF` → `0x8940`
+    - `0x1120` → `0x6AFE`
+    - `0x0000` → `0x6A14`
+    - `0x0000` → `0x6A3E`
+  - These findings support the working theory that Tune 040 used incorrect or intermediate MUT addresses and Tune 041 was flashed to restore intended Evo 8-specific MUT pointers for 2-byte logging.
 - **Tune 010 Notes:**
   - WGDC tables were zeroed out, except table 4, which was set to all `100` values.
   - Boost Cut Delay Timer was reduced to `500`.

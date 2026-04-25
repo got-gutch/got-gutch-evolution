@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-boost_tuner.py — Analyze EvoScan logs to suggest WGDC (Wastegate Duty Cycle) updates.
+boost_tuner.py \u2014 Analyze EvoScan logs to suggest WGDC (Wastegate Duty Cycle) updates.
 
 This script helps tune a 3-port boost solenoid (Port 1: Vent, Port 2: WG, Port 3: Turbo).
 - 0% DC = Spring Pressure (~11-12 psi)
@@ -14,10 +14,6 @@ import sys
 from pathlib import Path
 import pandas as pd
 
-# Load the EvoScanLog class or mimic its logic for pandas loading
-# For simplicity in a new script, we'll re-implement the core loading logic
-# or assume the user wants a standalone tool.
-
 class BoostAnalyzer:
     def __init__(self, log_path: str, target_boost: float = 21.0, spring_pressure: float = 12.0, hack01: bool = False):
         self.path = Path(log_path)
@@ -30,26 +26,37 @@ class BoostAnalyzer:
     def _load(self):
         """Load CSV and drop empty columns, similar to evoscan_parser."""
         self.df = pd.read_csv(self.path, encoding="utf-8-sig")
-        self.df.replace(r'^\s*$', pd.NA, regex=True, inplace=True)
-        self.df.dropna(axis=1, how='all', inplace=True)
+        self.df.replace(r"^\s*$", pd.NA, regex=True, inplace=True)
+        self.df.dropna(axis=1, how="all", inplace=True)
 
-        # Ensure MAP is numeric.
-        if "MAP" in self.df.columns:
-            self.df["MAP"] = pd.to_numeric(self.df["MAP"], errors='coerce')
+        # Map Boost Column (Prefer ZTXBoost, then MAP)
+        if "ZTXBoost" in self.df.columns:
+            self.df["Boost"] = pd.to_numeric(self.df["ZTXBoost"], errors="coerce")
+        elif "MAP" in self.df.columns:
+            self.df["Boost"] = pd.to_numeric(self.df["MAP"], errors="coerce")
             if self.hack01:
                 # Convert PSIA to PSIG by subtracting atmospheric pressure
-                self.df["MAP"] = self.df["MAP"] - 14.7
+                self.df["Boost"] = self.df["Boost"] - 14.7
+        else:
+            print(f"[!] Warning: No boost column (ZTXBoost or MAP) found in {self.path.name}")
+            self.df["Boost"] = 0.0
 
         if "TPS" in self.df.columns:
-            self.df["TPS"] = pd.to_numeric(self.df["TPS"], errors='coerce')
-        if "WGDC" in self.df.columns:
-            self.df["WGDC"] = pd.to_numeric(self.df["WGDC"], errors='coerce')
+            self.df["TPS"] = pd.to_numeric(self.df["TPS"], errors="coerce")
+        else:
+            print(f"[!] Warning: No TPS column found in {self.path.name}")
 
-    def find_wot_pulls(self, tps_thresh=95.0):
-        if "TPS" not in self.df.columns or "MAP" not in self.df.columns:
+        if "WGDC" in self.df.columns:
+            self.df["WGDC"] = pd.to_numeric(self.df["WGDC"], errors="coerce")
+
+    def find_wot_pulls(self, tps_thresh=90.0):
+        if "TPS" not in self.df.columns or "Boost" not in self.df.columns:
             return []
 
         is_wot = self.df["TPS"] >= tps_thresh
+        if not is_wot.any():
+            return []
+
         group_ids = (is_wot != is_wot.shift()).cumsum()
 
         pulls = []
@@ -65,11 +72,9 @@ class BoostAnalyzer:
             return
 
         print(f"\nAnalysis for {self.path.name}:")
-        if self.hack01:
-            print("[INFO] --hack01 applied: Subtracting 14.7 from MAP to convert PSIA -> PSIG.")
 
         for i, pull in enumerate(pulls, 1):
-            max_boost = pull["MAP"].max()
+            max_boost = pull["Boost"].max()
             avg_wgdc = pull["WGDC"].mean() if "WGDC" in pull.columns else 0.0
 
             print(f"\nPull {i}:")
@@ -83,7 +88,6 @@ class BoostAnalyzer:
                 print("  [>] Suggestion: Increase WGDC by 5-10% in the ROM to begin walking up to target.")
             elif max_boost < self.target_boost:
                 shortfall = self.target_boost - max_boost
-                # Rough heuristic: 1% WGDC approx 0.5-1.0 psi depending on setup
                 suggested_increase = min(10, max(2, int(shortfall * 1.5)))
                 print(f"  [-] Below Target ({self.target_boost} psi).")
                 print(f"  [>] Suggestion: Increase WGDC by {suggested_increase}% in your next tune.")
@@ -95,20 +99,18 @@ class BoostAnalyzer:
 
 def main():
     parser = argparse.ArgumentParser(description="Suggest WGDC updates based on EvoScan logs.")
-    parser.add_argument("log", help="Path to EvoScan CSV log file")
+    parser.add_argument("logs", nargs="+", help="Path to EvoScan CSV log file(s)")
     parser.add_argument("--target", type=float, default=21.0, help="Target boost in psi (default: 21.0)")
     parser.add_argument("--spring", type=float, default=12.0, help="Estimated spring pressure in psi (default: 12.0)")
     parser.add_argument("--hack01", action="store_true", help="Subtract 14.7 from MAP (PSIA -> PSIG conversion)")
     args = parser.parse_args()
 
-    try:
-        analyzer = BoostAnalyzer(args.log, target_boost=args.target, spring_pressure=args.spring, hack01=args.hack01)
-        analyzer.analyze()
-    except Exception as e:
-        print(f"Error: {e}")
-        sys.exit(1)
-    sys.exit(0)
+    for log_path in args.logs:
+        try:
+            analyzer = BoostAnalyzer(log_path, target_boost=args.target, spring_pressure=args.spring, hack01=args.hack01)
+            analyzer.analyze()
+        except Exception as e:
+            print(f"Error processing {log_path}: {e}")
 
 if __name__ == "__main__":
     main()
-
