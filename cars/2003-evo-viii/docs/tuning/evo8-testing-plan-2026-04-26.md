@@ -33,8 +33,8 @@
 | Run # | Controller Setting (A/B/Off) | Target Boost | Actual Boost | Crack Pressure | Notes |
 |---|---|---:|---:|---:|---|
 | 1 | Off | 12.5 PSI | ___ PSI | ___ PSI | Zero-state validation pass; confirm spring-only behavior |
-| 2 | A | 14 PSI | ___ PSI | ___ PSI | Validate Option A response and boost stability |
-| 3 | B | 14 PSI | ___ PSI | ___ PSI | Validate Option B response and compare against Option A |
+| 2 | A | 18 PSI | ___ PSI | ___ PSI | Validate Option A response and boost stability |
+| 3 | B | 20 PSI | ___ PSI | ___ PSI | Validate Option B response and compare against Option A |
 
 ## Observations/Logs
 
