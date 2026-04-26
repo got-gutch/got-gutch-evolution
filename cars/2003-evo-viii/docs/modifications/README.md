@@ -206,3 +206,33 @@ To smooth out the boost curve and prevent dangerous spikes, the next step is to 
 - [EvoScanDataLog_2026.04.25_05.55.56.csv](../../logs/EvoScanDataLog_2026.04.25_05.55.56.csv)
 - [EvoScanDataLog_2026.04.25_06.02.25.csv](../../logs/EvoScanDataLog_2026.04.25_06.02.25.csv)
 
+---
+
+## Boost Controller Relocation and Boost Spikes - 2026-04-26
+
+**Mileage:** approx. 96,000 miles
+
+### Description
+
+After relocating the AEM TruBoost controller to the radiator and reconnecting the vacuum lines, testing revealed significant boost control issues. Under wide-open throttle, the boost would spike to approximately 17psi, then drop sharply to around 7psi before starting to build again. This occurred without any driver input to reduce throttle and with no signs of engine knock.
+
+The behavior suggests that the wastegate is being forced open prematurely, likely due to the new vacuum line routing or a setting on the boost controller.
+
+### Supporting Data
+
+- [Graph of Boost Drop](cars/2003-evo-viii/logs/boost_drop_04_25_2026.png)
+- [Log File 1: EvoScanDataLog_2026.04.26_10.27.50.csv](cars/2003-evo-viii/logs/EvoScanDataLog_2026.04.26_10.27.50.csv)
+- [Log File 2: EvoScanDataLog_2026.04.26_10.35.23.csv](cars/2003-evo-viii/logs/EvoScanDataLog_2026.04.26_10.35.23.csv)
+
+### Analysis and Recommendations
+
+The sudden drop in boost pressure, despite the throttle remaining wide open, points to a mechanical or control issue with the wastegate system. Since this issue appeared after relocating the boost controller, the most likely causes are:
+
+1.  **Vacuum Line Configuration:** The new routing of the vacuum lines may be causing a pressure differential that is forcing the wastegate open.
+2.  **Boost Controller Settings:** The current settings on the AEM TruBoost controller may not be appropriate for the new physical setup.
+
+**Recommendation:**
+
+As a next step, reducing the wastegate crack pressure setting on the AEM TruBoost controller is a reasonable approach to smooth out the boost delivery. If this does not resolve the issue, a thorough review of the vacuum line routing and connections will be necessary.
+
+---
