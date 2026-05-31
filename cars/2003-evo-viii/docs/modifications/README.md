@@ -236,3 +236,54 @@ The sudden drop in boost pressure, despite the throttle remaining wide open, poi
 As a next step, reducing the wastegate crack pressure setting on the AEM TruBoost controller is a reasonable approach to smooth out the boost delivery. If this does not resolve the issue, a thorough review of the vacuum line routing and connections will be necessary.
 
 ---
+
+## JD Customs Titanium Hardware (Engine Bay)
+
+| Field       | Value                                                |
+|-------------|------------------------------------------------------|
+| Part        | Titanium hardware (nuts and bolts)                   |
+| Vendor      | JD Customs                                           |
+| Installed   | Late April to May 2026                               |
+| Purpose     | Weight reduction and corrosion resistance in engine bay |
+
+**Notes:** Additional titanium hardware from JD Customs was used to replace various nuts and bolts in the engine bay. This upgrade provides weight savings and improved corrosion resistance compared to the stock steel hardware.
+
+**References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
+
+---
+
+## Boost Leak Testing and Diagnosis
+
+| Field       | Value                                                |
+|-------------|------------------------------------------------------|
+| Date        | May 2026                                             |
+| Status      | Minimal testing completed; issue identified          |
+
+**Notes:** Initial boost leak testing was performed on the car. Testing revealed a whistle behind the battery area that indicates a potential boost leak. Further investigation and repair will be required to resolve this issue.
+
+**References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
+
+---
+
+## AEM TruBoost Gauge and Solenoid Tuning
+
+| Field       | Value                                                |
+|-------------|------------------------------------------------------|
+| Date        | May 2026                                             |
+| Purpose     | Fine-tune boost control using AEM TruBoost system    |
+
+**Notes:** Boost tuning was performed using the AEM TruBoost gauge and solenoid. This tuning session focused on optimizing boost delivery and reducing the boost spikes that were observed after the controller relocation in April 2026.
+
+**⚠️ Session Result — Boost Cut on Every Pull:** Analysis of the May 31 logs revealed that the car is hitting the ECU boost cut limit (~33 psi) on every single WOT pull. The TruBoost settings (crack=11 psi, duty=13 psi) are not controlling boost. WGDC from the ECU ROM is 0% across all pulls. Light knock (KnockSum 1–2) was detected in the final log. **Further WOT pulls are not recommended until solenoid plumbing and the boost leak behind the battery are verified.**
+
+**Full Analysis:** [truboost-analysis-2026-05-31.md](../tuning/truboost-analysis-2026-05-31.md)
+
+**Data Logs:**
+- [EvoScanDataLog_2026.05.31_09.12.36.csv](../../logs/EvoScanDataLog_2026.05.31_09.12.36.csv)
+- [EvoScanDataLog_2026.05.31_09.13.47.csv](../../logs/EvoScanDataLog_2026.05.31_09.13.47.csv)
+- [EvoScanDataLog_2026.05.31_09.15.05.csv](../../logs/EvoScanDataLog_2026.05.31_09.15.05.csv)
+- [EvoScanDataLog_2026.05.31_09.19.16.csv](../../logs/EvoScanDataLog_2026.05.31_09.19.16.csv)
+
+**References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
+
+---
