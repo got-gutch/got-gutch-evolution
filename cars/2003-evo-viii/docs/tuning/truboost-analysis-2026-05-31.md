@@ -34,7 +34,101 @@
 
 ---
 
-## ⚠️ Critical Findings
+## Why the TruBoost Gauge Showed 17.5 psi But the Logs Show 33 psi
+
+This is the most important finding of this session and it directly points to the root cause.
+
+### The Ramp Transition (from `09.15.05` log)
+
+| Time (s) | TPS% | RPM | MAP (psig) | WGDC |
+|----------|------|-----|------------|------|
+| 7.25 | 15.7% | 718 | 6.6 | **100%** |
+| 7.59 | 15.3% | 625 | 8.9 | **100%** |
+| 7.91 | 21.2% | 843 | **14.3** | **100%** |
+| 8.25 | 27.5% | 2531 | **17.8** | 0% |
+| 8.56 | 48.6% | 3406 | **33.1** | 0% |
+| 8.87 | 100% | 3468 | 33.1 | 0% |
+
+Boost went from **17.8 psi → 33 psi in 0.31 seconds.** EvoScan samples at ~4–5 Hz (~0.25s per sample), so the entire boost build is compressed into a single sample gap. The logger never captured the intermediate values.
+
+### The TruBoost Gauge Reads Its Own Reference Port — Not the Manifold
+
+The TruBoost controller measures boost using a dedicated **boost reference signal line** — the same line it uses to decide when to start opening the wastegate. This line is tee'd off **above the throttle body**, with a **reducer fitting** that steps the line down to the smaller diameter hose that came with the AEM TruBoost kit.
+
+**The TruBoost gauge was showing 17.5 psi because that is what its reference line was seeing — not because boost was only 17.5 psi in the manifold.** The actual manifold boost was 33 psi the entire pull.
+
+### Photo of the Tee Fitting
+
+![TruBoost reference tee](tee-photo-2026-05-31.jpg)
+
+The photo clearly shows the issue:
+- **Top connections (red spring clips):** Full-diameter hose — the main boost reference line tee'd from above the throttle body
+- **Bottom connections (green spring clips):** The reducer steps down to the significantly smaller diameter hose that came with the AEM TruBoost kit
+
+The inner diameter of the bottom tube appears to be roughly **half** the top line. Since flow area scales with diameter **squared**, the smaller tube has approximately **~25% of the flow area** of the source line. At high boost this is essentially a pinhole relative to the volume the source tap can deliver — the TruBoost reference port is severely starved.
+
+### Why Is the Reference Line Reading ~15.5 psi Lower Than the Manifold?
+
+**The reducer fitting is the restriction.** This is not a leak — it is a flow restriction. Here's what's happening:
+
+1. Manifold boost = **33 psi**, flowing through a full-diameter tap above the throttle body
+2. The reducer steps the line down to the small-diameter hose from the gauge kit
+3. At high boost/high flow, the smaller diameter **cannot equalize pressure fast enough** — there is a measurable pressure drop across the reducer
+4. The TruBoost controller sees **~17.5 psi** through the restricted line
+5. The TruBoost thinks boost is 17.5 psi and never fully commands the wastegate open
+6. The wastegate stays shut — boost runs away to the ECU cut limit
+
+The higher the actual boost, the larger the pressure drop across the restriction. At low boost (say 5–8 psi) the reducer probably reads close to accurate. At 33 psi there's a ~15.5 psi drop across it. This is a known issue with using undersized reference lines on high-boost applications.
+
+> **The whistle behind the battery is a separate issue** — it is still worth investigating as an independent boost leak, but it is NOT the cause of the 17.5 vs 33 psi discrepancy. The reducer is.
+
+### The WGDC Clue
+
+Notice in the ramp above: **WGDC = 100% while boost is building from 6 → 14 psi, then drops to 0% at 17.8 psi and stays at 0% for the rest of the pull.** This is the ECU's ROM-side WGDC table making a brief appearance during spool — it commands 100% to help build boost, then drops out. Once it drops to 0%, the TruBoost is supposed to take over. But with the reference line leaking, it never gets an accurate boost signal and the gate stays shut.
+
+### Summary of the Disconnect
+
+| What | Reading | Why |
+|------|---------|-----|
+| EvoScan MAP (manifold) | 33 psi | Direct MAP sensor in the intake manifold — accurate |
+| TruBoost gauge | 17.5 psi | Reads through a **reducer-restricted reference line** — ~15.5 psi pressure drop across the fitting at full boost |
+| WGDC (ECU ROM) | 0% at WOT | 3 of 4 maps zeroed; ECU drops out and TruBoost takes over — but TruBoost is flying blind on a restricted signal |
+
+**The reducer fitting is not "wrong" for low-boost applications, but at 33 psi it causes a ~15.5 psi measurement error. The TruBoost controller and wastegate actuator are both working from bad data.**
+
+---
+
+## WGDC Map Analysis — Should You Zero the 4th Map?
+
+### What the Logs Show
+
+The non-zero WGDC activity across logs 1–3 (before 3 maps were zeroed) follows a clear pattern:
+
+| Condition | WGDC | RPM | TPS | MAP (psig) |
+|-----------|------|-----|-----|------------|
+| Idle / low RPM decel | **100%** | 625–1562 | ~15–22% | vacuum to ~11 psi |
+| Coasting / engine braking | 17→34→51→68→85→100% | 1000–2500 | ~15% | vacuum |
+| WOT ramp (spool phase) | **100%** | 625–2531 | 15–27% | building to ~14 psi |
+| WOT fully open | **0%** | 3468+ | 100% | 33 psi |
+
+**The 4th remaining map is the idle/decel/low-load map.** It commands WGDC=100% while the car is at idle, coasting, and during the very beginning of the spool before TPS goes high. Once the pull is fully underway (TPS ≥ ~30%, RPM ≥ ~2500), WGDC drops to 0% and the TruBoost takes over.
+
+In the final session log (`09.19.16`) — after 3 maps were already zeroed — **WGDC is 0% the entire time including idle and decel**, and the car built to 33 psi just fine. So the remaining map is not contributing to the overboost.
+
+### Should You Zero It?
+
+**Yes — zero it**, with one caveat:
+
+- The 4th map only fires at idle, decel, and early spool. It is **not causing the overboost** and not relevant to WOT boost control.
+- With it zeroed, the ECU is completely hands-off on the wastegate in all conditions. This gives the TruBoost **clean, uncontested authority** — which is exactly what you want when dialing it in.
+- The `09.19.16` session already proved the car operates fine with zero ECU WGDC authority — it drove, pulled, and hit rev limiter without issue.
+- Once the reducer is replaced and the TruBoost starts actually controlling boost, you don't want the ECU's 4th map potentially fighting it at any RPM or load point.
+
+> **Caveat:** Get the reducer fixed first. Zeroing the last map before fixing the reference line just means the TruBoost has clean authority but is still working off a bad signal. Fix the hardware, then zero the map, then re-test.
+
+---
+
+## Immediate Recommendations (Updated)
 
 ### 1. ECU Boost Cut on Every Single Pull — 32.9 psi
 
@@ -70,27 +164,26 @@ The TruBoost solenoid is controlling the reference pressure line to the wastegat
 
 ---
 
-## Immediate Recommendations
+## Immediate Recommendations (Updated)
 
-> ⛔ **Do not make any more WOT pulls until this is resolved. The car is hitting 33 psi on every pull and has started knocking.**
+> ⛔ **Do not make any more WOT pulls until the reducer is replaced. The car is hitting 33 psi on every pull and has started knocking.**
 
 | Priority | Action |
 |----------|--------|
-| 🔴 **1 — Verify solenoid port plumbing** | Confirm Port 1 = Vent, Port 2 = Wastegate actuator, Port 3 = Turbo pressure source. Swap if needed. |
-| 🔴 **2 — Chase the boost leak whistle behind the battery** | A leak in the WG reference line will prevent the actuator from seeing full boost signal and keep the gate shut. |
-| 🟡 **3 — Drastically reduce TruBoost duty cycle target** | Try backing the duty cycle setting down to **7–8 psi** to see if the solenoid can start controlling boost at a lower target before walking it up. |
-| 🟡 **4 — Test at zero-duty (solenoid off / disconnected)** | Run a pull with the TruBoost solenoid electrically disconnected. Boost should be controlled only by the wastegate spring (~11 psi). If boost still hits 33 psi with the solenoid disconnected, the wastegate actuator itself is the problem. |
-| 🟢 **5 — Consider ECU WGDC table** | With WGDC at 0% from the ECU, there's no safety net. A ROM update to add a moderate base WGDC table would give the ECU some ability to modulate boost even if the external controller misbehaves. |
-
----
+| 🔴 **1 — Relocate the TruBoost gauge reference line** | To avoid using a reducer entirely, move the TruBoost reference line tap to a smaller-diameter vacuum source on the intake manifold that naturally matches the AEM hose size. The **Blow-Off Valve (BOV/diverter valve) vacuum line** is the safest and most common place to tee in for a boost gauge. *(Avoid tapping the Fuel Pressure Regulator (FPR) line, as a leak there can cause a dangerous lean condition under boost).* After this fix, the gauge and manifold boost readings should match. |
+| 🔴 **2 — Separately investigate the whistle behind the battery** | This is an independent boost leak — not the cause of the gauge discrepancy, but still a real boost leak that can affect power and spool consistency. Find and repair it. |
+| 🟡 **3 — Zero out the 4th WGDC map** | Safe to do. It only fires at idle/decel/early spool and isn't causing the overboost. Zeroing it gives the TruBoost clean uncontested authority. Do this **after** fixing the reducer so you're not walking into a test session with two unknowns. |
+| 🟡 **4 — Reset TruBoost duty cycle to a conservative starting point** | After fixing the reference line, start with duty cycle at **10–11 psi** (matching crack pressure) and walk up slowly from there. The controller will now see accurate boost and can actually do its job. |
+| 🟢 **5 — Re-log after the reducer fix** | First pull after the fix should be done carefully — the TruBoost will now command the wastegate for real. Boost should drop significantly from 33 psi. Tune from there. |
 
 ## Boost Controller Settings Reference
 
-| Parameter | Current | Suggested Next Test |
-|-----------|---------|---------------------|
+| Parameter | Current | After Reducer Fix |
+|-----------|---------|-------------------|
 | Crack PSI | 11 psi | Keep at 11 psi |
-| Duty Cycle | 13 psi | **Reduce to 7–8 psi** |
-| ECU WGDC | 0% (ROM) | Discuss with tuner — add base table |
+| Duty Cycle | 13 psi | Reset to 10–11 psi, walk up |
+| ECU WGDC (maps 1–3) | 0% | Keep at 0% |
+| ECU WGDC (map 4) | Active | **Zero it out** (after reducer fix) |
 
 ---
 
