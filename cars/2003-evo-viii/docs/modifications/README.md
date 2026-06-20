@@ -101,11 +101,11 @@
 <img src="https://github.com/user-attachments/assets/d4633249-4159-4310-bd0d-200ce3616277" alt="Over-boost event graph showing Engine RPM, Speed, and Boost (MAP) during the fuel cut">
 
 **The Breakdown:**
-1. **The Overboost Spike:** At approximately 3,400 RPM under 100% throttle, MAP sensor hit **47.78 psia**. This translates to **33.08 psi of boost** (47.78 psia - 14.7 atmospheric = 33.08 psig). Target boost was 21 psi — **overshooting by 12 psi in a split second**.
+1. **The Overboost Spike:** At approximately 3,400 RPM under 100% throttle, MAP sensor hit **47.78 psia**. This translates to **33.08 psi of boost** (47.78 psia - 14.7 atmospheric = 33.08 psig). [...]
 
-2. **Root Cause - WGDC at 100%:** The log shows Wastegate Duty Cycle (WGDC) was pegged at **100.0%** during the entire pull. In the Evo ECU, 100% duty cycle means the solenoid is keeping the wastegate slammed shut to build boost as fast as possible. With the new Tomei titanium exhaust installed, the turbo experienced significantly reduced backpressure and spooled much faster than the ECU expected. Because the WGDC didn't drop, the turbo kept pumping until it hit its physical limit.
+2. **Root Cause - WGDC at 100%:** The log shows Wastegate Duty Cycle (WGDC) was pegged at **100.0%** during the entire pull. In the Evo ECU, 100% duty cycle means the solenoid is keeping the wast[...]
 
-3. **The "Loud Boom" (Fuel Cut):** When the ECU detected 33 psi, it hit the Boost Cut / Load Limit and immediately cut fuel to the injectors while under heavy load. This violent event is the ECU's safety mechanism to prevent engine damage. The log shows a KnockSum of only 1 during the spike, confirming the ECU intervened in time to save the motor from detonation.
+3. **The "Loud Boom" (Fuel Cut):** When the ECU detected 33 psi, it hit the Boost Cut / Load Limit and immediately cut fuel to the injectors while under heavy load. This violent event is the ECU'[...] 
 
 **Action Required:** ECU tuning adjustment needed to prevent wastegate duty cycle from staying at 100% with the new low-backpressure exhaust system.
 
@@ -124,7 +124,7 @@
 | Installed   | March 20, 2026                                       |
 | Purpose     | Remove the factory downpipe restriction and improve exhaust flow |
 
-**Notes:** The STM downpipe was installed by Tuned Up LLC along with the rear bushing replacement. This completes the latest exhaust hardware change and pairs with the existing Boosted Fabrication resonated race pipe and Tomei cat-back exhaust.
+**Notes:** The STM downpipe was installed by Tuned Up LLC along with the rear bushing replacement. This completes the latest exhaust hardware change and pairs with the existing Boosted Fabricatio[...]
 
 **Data Logs:**
 - [EvoScanDataLog_2026.03.21_09.22.49.csv](../../logs/EvoScanDataLog_2026.03.21_09.22.49.csv)
@@ -156,7 +156,7 @@
 | Reason      | Resolve boost solenoid issues; reduce intake contamination |
 | Purpose     | Redirect boost solenoid vent from intake/input to a dedicated muffler |
 
-**Notes:** Previously, the boost solenoid (3-port wastegate solenoid) was venting back to the intake/input. The vent line has been rerouted to a muffler so it vents to atmosphere through the muffler instead. This change resolved the boost solenoid issues that were present on the car. The car was reassembled and returned to service on Easter 2026.
+**Notes:** Previously, the boost solenoid (3-port wastegate solenoid) was venting back to the intake/input. The vent line has been rerouted to a muffler so it vents to atmosphere through the muff[...] 
 
 **References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
 
@@ -193,14 +193,14 @@
 
 Moved the existing AEM TruBoost controller, mounting the solenoid on the radiator shroud and reconnecting the vacuum lines.
 
-During initial testing, observed significant boost spikes at wide-open throttle. The boost would spike rapidly, causing the ECU to cut throttle or hit a boost limiter, resulting in a sudden drop in power.
+During initial testing, observed significant boost spikes at wide-open throttle. The boost would spike rapidly, causing the ECU to cut throttle or hit a boost limiter, resulting in a sudden drop [...]
 
 ![Boost Spike Graph](../../logs/boost_drop_04_25_2026.png)
 
 The graph above shows the boost pressure (purple line) spiking and then dropping while the throttle position (red line) is still at 100%.
 
 **Recommended Action:**
-To smooth out the boost curve and prevent dangerous spikes, the next step is to adjust the wastegate. The plan is to reduce the wastegate crack pressure to make the wastegate open earlier, thus slowing the spool and preventing overshoot. This will be managed via the AEM TruBoost controller settings.
+To smooth out the boost curve and prevent dangerous spikes, the next step is to adjust the wastegate. The plan is to reduce the wastegate crack pressure to make the wastegate open earlier, thus s[...] 
 
 **Data Logs:**
 - [EvoScanDataLog_2026.04.25_05.55.56.csv](../../logs/EvoScanDataLog_2026.04.25_05.55.56.csv)
@@ -214,7 +214,7 @@ To smooth out the boost curve and prevent dangerous spikes, the next step is to 
 
 ### Description
 
-After relocating the AEM TruBoost controller to the radiator and reconnecting the vacuum lines, testing revealed significant boost control issues. Under wide-open throttle, the boost would spike to approximately 17psi, then drop sharply to around 7psi before starting to build again. This occurred without any driver input to reduce throttle and with no signs of engine knock.
+After relocating the AEM TruBoost controller to the radiator and reconnecting the vacuum lines, testing revealed significant boost control issues. Under wide-open throttle, the boost would spike [...]
 
 The behavior suggests that the wastegate is being forced open prematurely, likely due to the new vacuum line routing or a setting on the boost controller.
 
@@ -226,14 +226,14 @@ The behavior suggests that the wastegate is being forced open prematurely, likel
 
 ### Analysis and Recommendations
 
-The sudden drop in boost pressure, despite the throttle remaining wide open, points to a mechanical or control issue with the wastegate system. Since this issue appeared after relocating the boost controller, the most likely causes are:
+The sudden drop in boost pressure, despite the throttle remaining wide open, points to a mechanical or control issue with the wastegate system. Since this issue appeared after relocating the boos[...] 
 
 1.  **Vacuum Line Configuration:** The new routing of the vacuum lines may be causing a pressure differential that is forcing the wastegate open.
 2.  **Boost Controller Settings:** The current settings on the AEM TruBoost controller may not be appropriate for the new physical setup.
 
 **Recommendation:**
 
-As a next step, reducing the wastegate crack pressure setting on the AEM TruBoost controller is a reasonable approach to smooth out the boost delivery. If this does not resolve the issue, a thorough review of the vacuum line routing and connections will be necessary.
+As a next step, reducing the wastegate crack pressure setting on the AEM TruBoost controller is a reasonable approach to smooth out the boost delivery. If this does not resolve the issue, a thoro[...] 
 
 ---
 
@@ -246,7 +246,7 @@ As a next step, reducing the wastegate crack pressure setting on the AEM TruBoos
 | Installed   | Late April to May 2026                               |
 | Purpose     | Weight reduction and corrosion resistance in engine bay |
 
-**Notes:** Additional titanium hardware from JD Customs was used to replace various nuts and bolts in the engine bay. This upgrade provides weight savings and improved corrosion resistance compared to the stock steel hardware.
+**Notes:** Additional titanium hardware from JD Customs was used to replace various nuts and bolts in the engine bay. This upgrade provides weight savings and improved corrosion resistance compar[...] 
 
 **References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
 
@@ -259,7 +259,7 @@ As a next step, reducing the wastegate crack pressure setting on the AEM TruBoos
 | Date        | May 2026                                             |
 | Status      | Minimal testing completed; issue identified          |
 
-**Notes:** Initial boost leak testing was performed on the car. Testing revealed a whistle behind the battery area that indicates a potential boost leak. Further investigation and repair will be required to resolve this issue.
+**Notes:** Initial boost leak testing was performed on the car. Testing revealed a whistle behind the battery area that indicates a potential boost leak. Further investigation and repair will be [...]
 
 **References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
 
@@ -272,9 +272,9 @@ As a next step, reducing the wastegate crack pressure setting on the AEM TruBoos
 | Date        | May 2026                                             |
 | Purpose     | Fine-tune boost control using AEM TruBoost system    |
 
-**Notes:** Boost tuning was performed using the AEM TruBoost gauge and solenoid. This tuning session focused on optimizing boost delivery and reducing the boost spikes that were observed after the controller relocation in April 2026.
+**Notes:** Boost tuning was performed using the AEM TruBoost gauge and solenoid. This tuning session focused on optimizing boost delivery and reducing the boost spikes that were observed after th[...] 
 
-**⚠️ Session Result — Boost Cut on Every Pull:** Analysis of the May 31 logs revealed that the car is hitting the ECU boost cut limit (~33 psi) on every single WOT pull. The TruBoost settings (crack=11 psi, duty=13 psi) are not controlling boost. WGDC from the ECU ROM is 0% across all pulls. Light knock (KnockSum 1–2) was detected in the final log. **Further WOT pulls are not recommended until solenoid plumbing and the boost leak behind the battery are verified.**
+**⚠️ Session Result — Boost Cut on Every Pull:** Analysis of the May 31 logs revealed that the car is hitting the ECU boost cut limit (~33 psi) on every single WOT pull. The TruBoost settin[...] 
 
 **Full Analysis:** [truboost-analysis-2026-05-31.md](../tuning/truboost-analysis-2026-05-31.md)
 
@@ -287,3 +287,18 @@ As a next step, reducing the wastegate crack pressure setting on the AEM TruBoos
 **References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
 
 ---
+
+## Boost Hose Replacement and Switch Installation
+
+| Field | Value |
+| ----- | ----- |
+| Part | Upgraded 4mm silicone boost/vacuum hoses & boost control switch |
+| Date | June 18, 2026 |
+| Purpose | Address boost control issues by replacing lines and reconfiguring switch integration |
+
+*Notes:* Replaced the worn vacuum and boost hoses with upgraded 4mm silicone lines to ensure a clean seal and solid pressure delivery. Corrected the plumbing by switching the lines to their proper routing configuration. Installed and configured the physical control switch to integrate cleanly with the AEM Tru-Boost setup, allowing for manual maps/setting changes.
+
+*Data Logs:*
+- `../../logs/EvoScanDataLog_YYYY.MM.DD_HH.MM.SS.csv` *(placeholder: add new EvoScan .csv data log)*
+
+*References / YouTube Shorts:* https://www.youtube.com/@bradgutch *(placeholder: add specific Short URL here)*
