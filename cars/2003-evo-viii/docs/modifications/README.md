@@ -298,7 +298,87 @@ As a next step, reducing the wastegate crack pressure setting on the AEM TruBoos
 
 *Notes:* Replaced the worn vacuum and boost hoses with upgraded 4mm silicone lines to ensure a clean seal and solid pressure delivery. Corrected the plumbing by switching the lines to their proper routing configuration. Installed and configured the physical control switch to integrate cleanly with the AEM Tru-Boost setup, allowing for manual maps/setting changes.
 
+![Boost Solenoid](../boost_solinoid.jpg)
+
+**0% Duty Cycle (Default / Spring Pressure)**
+```mermaid
+graph TD
+    J(J-Pipe / Compressor Housing) -->|Boost Source| P3([Port 3])
+    
+    subgraph Solenoid_0[Boost Solenoid]
+        P3([Port 3])
+        P2([Port 2])
+        P1([Port 1])
+        
+        P3 ===|Flows Through| P2
+    end
+    
+    P2 -->|Pressure applied| W(Wastegate Actuator)
+    P1 -.-x|Blocked| V(Muffler / Atmosphere)
+
+    %% Styling 
+    classDef source fill:#d4edda,stroke:#4caf50,stroke-width:2px,color:#000
+    classDef port fill:#cce5ff,stroke:#004085,stroke-width:2px,color:#000,font-weight:bold
+    classDef output fill:#f8d7da,stroke:#dc3545,stroke-width:2px,color:#000
+    classDef vent fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#000
+    
+    class J source
+    class P1,P2,P3 port
+    class W output
+    class V vent
+    style Solenoid_0 fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,stroke-dasharray: 5 5,color:#000
+```
+
+**100% Duty Cycle (Max Boost / Bleed)**
+```mermaid
+graph TD
+    J(J-Pipe / Compressor Housing) -.-x|Boost Blocked| P3([Port 3])
+    
+    subgraph Solenoid_100[Boost Solenoid]
+        P3([Port 3])
+        P2([Port 2])
+        P1([Port 1])
+        
+        P2 ===|Pressure Bled| P1
+    end
+    
+    P2 -.-x|No Pressure| W(Wastegate Actuator)
+    P1 -->|Vent to Atmosphere| V(Muffler / Atmosphere)
+
+    %% Styling 
+    classDef source fill:#d4edda,stroke:#4caf50,stroke-width:2px,color:#000
+    classDef port fill:#cce5ff,stroke:#004085,stroke-width:2px,color:#000,font-weight:bold
+    classDef output fill:#f8d7da,stroke:#dc3545,stroke-width:2px,color:#000
+    classDef vent fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#000
+    
+    class J source
+    class P1,P2,P3 port
+    class W output
+    class V vent
+    style Solenoid_100 fill:#f8f9fa,stroke:#6c757d,stroke-width:2px,stroke-dasharray: 5 5,color:#000
+```
+
 *Data Logs:*
 - `../../logs/EvoScanDataLog_YYYY.MM.DD_HH.MM.SS.csv` *(placeholder: add new EvoScan .csv data log)*
 
 *References / YouTube Shorts:* https://www.youtube.com/@bradgutch *(placeholder: add specific Short URL here)*
+
+---
+
+## Boost Surging Correction and TruBoost Tuning
+
+| Field | Value |
+| ----- | ----- |
+| Date | June 20, 2026 |
+| Purpose | Correct the WOT boost surging/oscillation observed after the new silicone line install |
+
+*Notes:* After replacing the vacuum/boost lines, the turbo exhibited noticeable boost surging (cycling up and down) in 3rd and 4th gear under heavy throttle. The new 4mm silicone lines made the wastegate react much faster than before, meaning the existing AEM TruBoost settings were too aggressive and causing the boost to overshoot the target before the wastegate could crack open.
+
+**The Fix:**
+Reduced the `Spr` (Crack Pressure) setting on the TruBoost by a few PSI. By lowering the crack pressure, the wastegate is given a head-start to open and gracefully catch the boost curve. The duty cycle (`Dty`) was then increased slightly to hit the final target smoothly. The surging is completely eliminated, and the boost delivery is solid and smooth.
+
+**Data Logs:**
+- [EvoScanDataLog_2026.06.20_10.15.30.csv](../../logs/EvoScanDataLog_2026.06.20_10.15.30.csv)
+- [EvoScanDataLog_2026.06.20_10.18.45.csv](../../logs/EvoScanDataLog_2026.06.20_10.18.45.csv)
+
+**References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
