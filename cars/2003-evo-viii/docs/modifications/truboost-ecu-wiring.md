@@ -17,6 +17,36 @@ The factory 1-bar Manifold Differential Pressure (MDP) sensor is mounted on top 
 3. Wire the Tru-Boost's **White Wire** (0-5V out) to the *Signal* pin of your mating connector.
 4. Plug it in. The signal travels perfectly along the factory harness directly to Pin 73 on the ECU.
 
+**Boost path diagram:**
+```mermaid
+flowchart LR
+    subgraph Cabin[Cabin / Gauge Side]
+        TB[AEM Tru-Boost Gauge]
+        TBW[White Wire\n0-5V Analog Out]
+    end
+
+    subgraph EngineBay[Engine Bay / Stock Sensor Connector]
+        MDP[Factory MDP Sensor Plug]
+        MDP_SIG[Signal Pin]
+        MDP_GND[Sensor Ground]
+    end
+
+    subgraph ECU[Factory ECU]
+        P73[Pin 73\nMDP Input]
+    end
+
+    TB --> TBW --> MDP_SIG --> P73
+    MDP_GND --- P73
+```
+
+**Important Note - Disabling the MDP CEL:**  
+Because the ECU is no longer receiving the expected stock voltage behavior from the MDP sensor, it will trigger a Check Engine Light (CEL) for an MDP sensor malfunction (such as code P0105, P0107, or P0108). 
+To fix this, you must use EcuFlash to disable the MDP diagnostic trouble codes in your ROM periphery bits:
+- Open your ROM in EcuFlash.
+- Navigate to **ECU Periphery0 (Hex)** (often labeled `Periphery 0` at address `FCA` or similar depending on XML).
+- Change **Bit 11** to `0` (Disable EGR/MDP/Baro tests).
+- Alternatively, if your XML exposes the specific DTC toggles under "ECU Periphery (FCA) Bits", find `Bit 11: EGR/MDP/Baro` and change it from 1 to 0. 
+
 **For AFR / Wideband (AEM X-Series -> Pin 75):**
 Since you flashed the ECU to disable the catalytic converter (`e8-t030-disable_cat.hex`), the factory Rear O2 sensor is no longer needed.
 1. Locate the Rear O2 sensor plug under the passenger side / center tunnel of the car.
@@ -24,6 +54,53 @@ Since you flashed the ECU to disable the catalytic converter (`e8-t030-disable_c
 3. Purchase a matching connector (or cut the pigtail off an old burnt-out O2 sensor).
 4. Wire the Wideband's **Analog Output Wire** (often Blue or White depending on gauge era) to the *Signal* pin on the O2 pigtail.
 5. Plug it in. The AFR signal now travels through the factory passenger-seat floor harness directly to Pin 75 on the ECU.
+
+**Wideband path diagram:**
+```mermaid
+flowchart LR
+    subgraph Cabin[Cabin / Gauge Side]
+        WB[AEM X-Series Wideband]
+        WBO[Analog Output Wire\n0-5V AFR Out]
+        WBG[Analog Ground Wire]
+    end
+
+    subgraph EngineBay[Underbody / Rear O2 Connector]
+        O2[Factory Rear O2 Sensor Plug]
+        O2_SIG[Signal Pin]
+        O2_GND[Sensor Ground]
+    end
+
+    subgraph ECU[Factory ECU]
+        P75[Pin 75\nRear O2 Input]
+    end
+
+    WB --> WBO --> O2_SIG --> P75
+    WBG --- O2_GND
+```
+
+**Combined routing overview:**
+```mermaid
+flowchart TB
+    subgraph Cabin[Cabin]
+        TB[AEM Tru-Boost]
+        WB[AEM X-Series Wideband]
+    end
+
+    subgraph EngineBay[Vehicle Harness Hijack Points]
+        MDP[Factory MDP Sensor Plug<br/>hijacked for boost]
+        O2[Factory Rear O2 Plug<br/>hijacked for AFR]
+    end
+
+    subgraph ECU[Factory ECU]
+        P73[Pin 73<br/>MDP Input]
+        P75[Pin 75<br/>Rear O2 Input]
+    end
+
+    TB -->|White 0-5V Out| MDP --> P73
+    WB -->|Analog Out 0-5V| O2 --> P75
+    MDP -. sensor ground .- P73
+    O2 -. sensor ground .- P75
+```
 
 *(Note for both: ensure you share the AEM sensor ground wire with the sensor ground pin on the respective factory plugs to avoid voltage offset drift!)*
 
