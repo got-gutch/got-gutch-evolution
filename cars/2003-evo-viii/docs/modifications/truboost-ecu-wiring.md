@@ -20,23 +20,23 @@ The factory 1-bar Manifold Differential Pressure (MDP) sensor is mounted on top 
 **Boost path diagram:**
 ```mermaid
 flowchart LR
-    subgraph Cabin[Cabin / Gauge Side]
-        TB[AEM Tru-Boost Gauge]
-        TBW[White Wire\n0-5V Analog Out]
+    subgraph CABIN[Cabin]
+        TB[AEM Tru-Boost]
+        TBW[White Wire<br/>0-5V analog out]
     end
 
-    subgraph EngineBay[Engine Bay / Stock Sensor Connector]
-        MDP[Factory MDP Sensor Plug]
+    subgraph ENGINE[Engine Bay]
+        MDP[Factory MDP Plug]
         MDP_SIG[Signal Pin]
-        MDP_GND[Sensor Ground]
+        MDP_GND[Sensor Ground Pin]
     end
 
     subgraph ECU[Factory ECU]
-        P73[Pin 73\nMDP Input]
+        P73[Pin 73<br/>MDP input]
     end
 
     TB --> TBW --> MDP_SIG --> P73
-    MDP_GND --- P73
+    MDP_GND -. sensor ground .- P73
 ```
 
 **Important Note - Disabling the MDP CEL:**  
@@ -58,24 +58,24 @@ Since you flashed the ECU to disable the catalytic converter (`e8-t030-disable_c
 **Wideband path diagram:**
 ```mermaid
 flowchart LR
-    subgraph Cabin[Cabin / Gauge Side]
+    subgraph CABIN[Cabin]
         WB[AEM X-Series Wideband]
-        WBO[Analog Output Wire\n0-5V AFR Out]
+        WBO[Analog Output Wire<br/>0-5V AFR out]
         WBG[Analog Ground Wire]
     end
 
-    subgraph EngineBay[Underbody / Rear O2 Connector]
-        O2[Factory Rear O2 Sensor Plug]
+    subgraph ENGINE[Underbody]
+        O2[Factory Rear O2 Plug]
         O2_SIG[Signal Pin]
-        O2_GND[Sensor Ground]
+        O2_GND[Sensor Ground Pin]
     end
 
     subgraph ECU[Factory ECU]
-        P75[Pin 75\nRear O2 Input]
+        P75[Pin 75<br/>Rear O2 input]
     end
 
     WB --> WBO --> O2_SIG --> P75
-    WBG --- O2_GND
+    WBG -. sensor ground .- O2_GND
 ```
 
 **Combined routing overview:**
@@ -102,25 +102,25 @@ flowchart TB
     O2 -. sensor ground .- P75
 ```
 
-*(Note for both: ensure you share the AEM sensor ground wire with the sensor ground pin on the respective factory plugs to avoid voltage offset drift!)*
+    subgraph CABIN[Cabin]
 
 ---
 
 ### Approach 2: Using a Patch Harness at the ECU
-
-If you'd rather keep all wiring inside the footwell, it is highly recommended to buy an Evo 8 ECU Patch Harness (often called a boomslang or extension harness).
-
+    subgraph ENGINE[Vehicle harness hijack points]
+        MDP[Factory MDP Plug<br/>boost signal hijack]
+        O2[Factory Rear O2 Plug<br/>AFR signal hijack]
 ```text
 [Factory Wiring Harness] ---> [Plug-and-Play Patch Harness] ---> [Factory ECU]
                                          |
-                            (Wire Tru-Boost & Wideband Here!)
-```
+        P73[Pin 73<br/>MDP input]
+        P75[Pin 75<br/>Rear O2 input]
 
 **Why this makes it easy:** It sits as a bridge between your factory car plugs and the ECU. You can sit comfortably at a desk, splice the AEM wire directly into the patch harness, and then just walk out to the car and plug it in line.
-
-## Step-by-Step Wiring Guide (Patch Harness Method)
-
-The Tru-Boost harness has a **White Wire** designated for the 0-5V Analog Output. Your factory ECU has a dedicated pin for the old 1-bar MDP sensor that was diagnosed as useless for logging boost. By cutting the MDP signal wire and feeding it the Tru-Boost's white wire, EvoScan will seamlessly read the true gauge pressure instead.
+    TB -->|White wire<br/>0-5V out| MDP --> P73
+    WB -->|Analog output<br/>0-5V out| O2 --> P75
+    MDP -. sensor ground .- P73
+    O2 -. sensor ground .- P75
 
 ### 1. Identify Your Pins (2003 Evo VIII 4-Plug ECU)
 
