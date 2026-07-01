@@ -7,6 +7,20 @@ Document significant repairs here. Include the date, parts used, reason, and a l
 <details>
 <summary><strong>Future Repairs</strong></summary>
 
+## FUTURE: Passenger Side Strut Tower nut (titanium) replacement
+
+**Status:** Planned  
+**Reason:** The passenger side strut tower nut is currently a titanium aftermarket replacement that has been stripped and is no longer holding the strut tower securely. This is a critical safety issue that requires immediate attention to ensure the strut tower is properly secured to the chassis
+and to allow for the removal of the strut brace for future throttle body service. The stripped titanium nut will be replaced with a new OEM steel nut to restore proper clamping force and ensure the strut tower is securely fastened.
+
+| Task                        | Details                                     |
+|-----------------------------|---------------------------------------------|
+| Strut Tower Bolt Removal    | Need shop to remove titanium nut            |
+| Brake Reservoir cap removal | Need shop to remove temp brake resavior cap |
+
+
+---
+
 ## FUTURE: Front Lower Control Arm (LCA) Bushing Refresh — Powerflex Purple (Street)
 
 **Status:** Planned  
