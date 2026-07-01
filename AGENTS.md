@@ -41,6 +41,27 @@
 - XML/config references in `cars/2003-evo-viii/configs/evo-scan-data-settings/*.xml`.
 - Long-lived evidence artifacts include markdown analyses and captured command output files (for example `ANALYSIS_run_001.md`, `run_001.out`).
 
+## IntelliJ MCP Server Workflow
+- Prefer IntelliJ MCP tools when available; use them before falling back to terminal-based searching or editing.
+- For codebase navigation, prefer:
+  - `search_symbol` for classes, methods, fields, and other identifiers.
+  - `search_text` / `search_regex` for exact strings or patterns.
+  - `search_file` / `find_files_by_glob` / `list_directory_tree` for locating files.
+  - `get_file_text_by_path` / `read_file` for source context.
+- For code changes, prefer IDE-aware operations when possible:
+  - `rename_refactoring` for symbol renames.
+  - `replace_text_in_file` for targeted text edits.
+  - `insert_edit_into_file` / `apply_patch` for structured file updates.
+  - `reformat_file` after meaningful edits.
+- For validation, prefer IntelliJ-native checks first:
+  - `get_file_problems` for inspections on a single file.
+  - `build_project` after edits that may affect compilation.
+  - `mcp_intellij-mcps_execute_run_configuration` for running existing configs.
+- For debugging, prefer the XDebug tools:
+  - `xdebug_start_debugger_session`, `xdebug_control_session`, `xdebug_get_stack`, `xdebug_get_frame_values`, and related helpers.
+- When a project path is known, pass it to IntelliJ MCP calls to reduce ambiguity and improve reliability.
+- Keep edits narrow and IDE-friendly so markdown docs, scripts, and ROM/tune notes stay easy to review in the editor.
+
 ## Where Agents Should Look Before Editing
 - `README.md` for repo map and canonical commands.
 - `cars/2003-evo-viii/README.md` for vehicle-specific context.

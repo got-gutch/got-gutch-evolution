@@ -14,6 +14,36 @@
 
 ---
 
+## June 21, 2026 — TruBoost WOT Log Review
+
+| Field       | Value |
+|-------------|-------|
+| Date        | June 21, 2026 |
+| Purpose     | Review TruBoost settings against two morning WOT logs after the latest boost-control changes |
+| TruBoost    | `opp=9.2`, `A=14`, `B=16`, `Alarm=25`, `Max=28` |
+
+*Notes:* Two EvoScan logs were captured during morning WOT testing after the boost-controller / hose changes. The logs show the TruBoost command is in a stable range for the current setup, with boost tracking cleanly through the pull and no sustained knock activity.
+
+**Log Analysis Summary:**
+- **Log 1:** `EvoScanDataLog_2026.06.21_07.54.45.csv`
+  - Found **2 WOT segments**.
+  - Segment 1: RPM climbed from about **4594 to 6625**, TPS stayed at **100%**, timing advanced from **9° to 20°**, and `KnockSum` peaked at **2**.
+  - Segment 2: RPM climbed from about **5094 to 5938**, TPS stayed at **100%**, timing ranged from **9° to 14°**, and `KnockSum` peaked at **1**.
+- **Log 2:** `EvoScanDataLog_2026.06.21_07.56.12.csv`
+  - Found **2 WOT segments**.
+  - Segment 1: RPM climbed from about **4563 to 5344**, TPS stayed at **100%**, timing ranged from **7° to 15°**, and `KnockSum` stayed at **0**.
+  - Segment 2: RPM climbed from about **3844 to 4719**, TPS stayed near **100%**, timing ranged from **7° to 13°**, and `KnockSum` stayed at **0**.
+
+**Takeaway:** The current TruBoost setup appears controlled and repeatable across both logs. The first log shows only minor, momentary knock counts at higher RPM/load, while the second log is clean. The current settings (`opp=9.2`, `A=14`, `B=16`, `Alarm=25`, `Max=28`) are worth keeping as the baseline for the next tuning review.
+
+**Data Logs:**
+- [EvoScanDataLog_2026.06.21_07.54.45.csv](../../logs/EvoScanDataLog_2026.06.21_07.54.45.csv)
+- [EvoScanDataLog_2026.06.21_07.56.12.csv](../../logs/EvoScanDataLog_2026.06.21_07.56.12.csv)
+
+**References / YouTube Shorts:** https://www.youtube.com/@bradgutch *(find short titled "Evo 8 …" and add link here)*
+
+---
+
 ## New Windshield
 
 | Field     | Value                         |
