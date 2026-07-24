@@ -8,7 +8,13 @@ YouTube channel: https://www.youtube.com/@bradgutch — shorts for this car may 
 
 The 2017 Ford Focus RS has undergone a major engine replacement. After waiting for a new motor from Mountune, the team at **Forest Hill Exotics** successfully completed the installation. During the process, the turbo was found to be seized and required replacement. The car is scheduled for pickup on **Monday, June 1, 2026**.
 
-**As of June 20, 2026:** The engine is currently 250 miles into its break-in period.
+**As of June 20, 2026:** The engine is 250 miles into its break-in period.
+
+**As of July 14, 2026:** The engine has reached **500 miles** on the new motor.
+
+**July 16, 2026:** Brought the car to **Eli at Tuned Up LLC** for post-break-in inspection. The oil leak was diagnosed as originating from the **valve cover (front left side of engine)**.
+
+**As of July 23, 2026:** Got the car back from **Tuned Up LLC** after the valve cover repair and post-break-in inspection.
 
 ---
 
@@ -80,6 +86,44 @@ The 2017 Ford Focus RS has undergone a major engine replacement. After waiting f
 
 ---
 
+### Valve Cover Gasket Replacement, Inspection, and Related Service
+
+| Field       | Value                                                |
+|-------------|------------------------------------------------------|
+| Shop        | Tuned Up LLC                                         |
+| Invoice     | #5442                                                |
+| Date        | July 21, 2026                                        |
+
+**Notes:** Tuned Up LLC diagnosed the oil leak as coming from the valve cover, specifically the back side / front-left area of the engine. They performed a valve cover gasket R&R, engine oil and filter service, compression test, boost leak test, and reconnected the sunroof drain hose. Compression was reported at 165-170 throughout, and no boost leaks were found.
+
+**Additional invoice note:** Rear driver-side wheel is bent.
+
+**Video from Eli:** [focus_valve_cover_off_2026.mp4](focus_valve_cover_off_2026.mp4)
+
+---
+
 ## Future Documentation
 
 This directory will contain documentation, ROMs, logs, and other artifacts related to the 2017 Ford Focus RS as it continues its tuning and maintenance journey.
+
+---
+
+## Service Work — Tuned Up LLC (July 16, 2026)
+
+### Completed Work
+
+1. General inspection of the newly installed motor (post-break-in check at 500 miles).
+2. **Oil leak diagnosis and repair:** Valve cover leak (front left side of engine); valve cover gasket R&R completed.
+3. Re-attach the driver's side sunroof drain hose to the corner sunroof nipple.
+
+**Status:** Car returned from Tuned Up LLC after the inspection, diagnosis, and repair visit.
+
+### Recommended Additional Checks Before Harder Driving
+
+1. Compression and leak-down test to confirm engine sealing health.
+2. Boost/vacuum leak smoke test and full charge-pipe/intercooler coupler check.
+3. Verify turbo oil/coolant line routing, sealing, and fastener torque around the prior leak area.
+4. Confirm fluid health and levels (engine oil, coolant) and inspect for contamination.
+5. Datalog a controlled pull to review AFR, boost control, ignition timing/knock correction, and fuel trims.
+6. Inspect spark plugs (heat range, condition, and gap) and verify coil health.
+7. Check engine/trans mounts and key drivetrain hardware torque.
